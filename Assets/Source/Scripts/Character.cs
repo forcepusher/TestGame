@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Faraway.TestGame
 {
     [RequireComponent(typeof(CharacterController))]
-    public class Character : MonoBehaviour, IRunner
+    public class Character : MonoBehaviour, IRunner, IEffectTarget
     {
         [SerializeField]
         private float _speed = 10f;
@@ -48,6 +48,11 @@ namespace Faraway.TestGame
         public void Move(Vector3 motion)
         {
             _characterController.Move(motion);
+        }
+
+        public void AddEffect(IEffectBehavior effectBehavior)
+        {
+            _effectBehaviors.Add(effectBehavior);
         }
     }
 }

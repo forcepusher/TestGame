@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
-    public interface IRunner
+    public interface IRunner : IEffectTarget
     {
         /// <remarks>
         /// Required for flying.
