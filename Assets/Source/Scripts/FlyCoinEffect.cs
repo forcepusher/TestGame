@@ -31,9 +31,6 @@ namespace Faraway.TestGame
                 float heightAdjustmentThisFrame = Mathf.Min(FlyTweenSpeed * Time.deltaTime, characterToFlyHeightDifference);
                 _runner.Move(new Vector3(0f, heightAdjustmentThisFrame, 0f));
             }
-                
-
-            Debug.Log(_elapsedTime);
         }
     }
 }
