@@ -4,7 +4,7 @@ namespace Faraway.TestGame
 {
     public class FlyCoinEffect : IEffectBehavior
     {
-        private const float FlyHeight = 4f;
+        private const float FlyHeight = 3f;
         private const float FlyTweenSpeed = 4f;
 
         private readonly IRunner _runner;
