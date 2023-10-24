@@ -6,15 +6,19 @@ namespace Faraway.TestGame
     public class Character : MonoBehaviour, IMovable
     {
         [SerializeField]
-        private ContactFilter2D _contactFilter = new();
+        private float _speed = 10f;
+        [SerializeField]
+        private float _gravity = 20f;
+        [SerializeField]
+        private ContactFilter2D _collisionContactFilter = new();
 
         private readonly List<IEffectBehavior> _effectBehaviors = new();
 
         public Vector2 Position => transform.position;
-        private Vector2 _velocity = Vector2.zero;
+        private float _verticalVelocity = 0f;
 
         private Collider2D _collider;
-        private RaycastHit2D[] _raycastHit = new RaycastHit2D[32];
+        private RaycastHit2D[] _raycastHits = new RaycastHit2D[32];
 
         private void Awake()
         {
@@ -23,6 +27,9 @@ namespace Faraway.TestGame
 
         private void Update()
         {
+            _verticalVelocity += _gravity * Time.deltaTime;
+            Move(new Vector2(_speed * Time.deltaTime, _verticalVelocity * Time.deltaTime));
+
             for (int effectIterator = _effectBehaviors.Count - 1; effectIterator >= 0; effectIterator--)
             {
                 IEffectBehavior effectBehavior = _effectBehaviors[effectIterator];
@@ -36,9 +43,19 @@ namespace Faraway.TestGame
 
         public void Move(Vector2 motion)
         {
-            //_collider.Cast(motion, _raycastHit)
+            float collisionDistanceLimit = float.PositiveInfinity;
+
+            int hitsCount = _collider.Cast(motion, _collisionContactFilter, _raycastHits, motion.magnitude);
+            for (int hitIterator = 0; hitIterator < hitsCount; hitIterator++)
+            {
+                float hitDistance = _raycastHits[hitIterator].distance;
+                if (hitDistance < collisionDistanceLimit)
+                    collisionDistanceLimit = hitDistance;
+            }
+
+            motion = Vector2.ClampMagnitude(motion, collisionDistanceLimit);
+
             transform.Translate(motion);
-            
         }
     }
 }
