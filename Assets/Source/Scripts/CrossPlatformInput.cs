@@ -13,6 +13,15 @@ namespace Faraway.TestGame
             TickLoop();
         }
 
+        public float HorizontalMovementDelta => _horizontalMovementDeltaTouch + _horizontalMovementDeltaMouse;
+        public bool Jump => _jumpKeyboard || _jumpTouch;
+
+        private float _horizontalMovementDeltaTouch;
+        private float _horizontalMovementDeltaMouse;
+
+        private bool _jumpTouch;
+        private bool _jumpKeyboard = Input.GetButtonDown("Jump");
+
         private async void TickLoop()
         {
             while (true)
@@ -24,9 +33,9 @@ namespace Faraway.TestGame
             }
         }
 
-        public float HorizontalMovementDelta => throw new System.NotImplementedException();
+        
 
-        public bool Jump => throw new System.NotImplementedException();
+        
 
         public void Dispose()
         {
