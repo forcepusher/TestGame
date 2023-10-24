@@ -11,7 +11,10 @@ namespace Faraway.TestGame
         {
             IRunner runner = enteredCollider.GetComponent<IRunner>();
             if (runner != null)
+            {
                 runner.AddEffect(new FlyCoinEffect(runner, _duration));
+                Destroy(gameObject);
+            }
         }
     }
 }

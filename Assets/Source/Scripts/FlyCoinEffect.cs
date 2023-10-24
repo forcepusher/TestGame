@@ -1,7 +1,12 @@
+using UnityEngine;
+
 namespace Faraway.TestGame
 {
     public class FlyCoinEffect : IEffectBehavior
     {
+        private const float FlyHeight = 3f;
+        private const float FlyTweenVelocity = 40f;
+
         private readonly IRunner _runner;
         private readonly float _duration;
 
@@ -17,7 +22,12 @@ namespace Faraway.TestGame
 
         public void Tick(float deltaTime)
         {
-            //if (_runner)
+            if (_runner.Position.y < FlyHeight)
+                _runner.Move(new Vector3(0f, FlyTweenVelocity * deltaTime, 0f));
+
+            Debug.Log("MOVEWFEJWLFIJEWL");
+
+            _elapsedTime += deltaTime;
         }
     }
 }
