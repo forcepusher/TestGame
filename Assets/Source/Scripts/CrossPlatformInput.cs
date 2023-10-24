@@ -6,6 +6,8 @@ namespace Faraway.TestGame
 {
     public class CrossPlatformInput : IInputSource, IDisposable
     {
+        private const float MouseSensitivity = 100f;
+
         private bool _disposed = false;
 
         public CrossPlatformInput()
@@ -16,11 +18,11 @@ namespace Faraway.TestGame
         public float HorizontalMovementDelta => _horizontalMovementDeltaTouch + _horizontalMovementDeltaMouse;
         public bool Jump => _jumpKeyboard || _jumpTouch;
 
-        private float _horizontalMovementDeltaTouch = Input.touches[0].deltaPosition.x;
-        private float _horizontalMovementDeltaMouse = Input.GetAxisRaw("Horizontal");
+        private float _horizontalMovementDeltaTouch;
+        private float _horizontalMovementDeltaMouse => Input.GetAxisRaw("Mouse X") / Screen.width * MouseSensitivity;
 
-        private bool _jumpTouch = Input.touches[0].tapCount >= 1;
-        private bool _jumpKeyboard = Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0);
+        private bool _jumpTouch;
+        private bool _jumpKeyboard => Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0);
 
         private async void TickLoop()
         {
@@ -31,7 +33,11 @@ namespace Faraway.TestGame
                 if (_disposed)
                     return;
 
-
+                if (Input.touchCount > 0)
+                {
+                    _jumpTouch = Input.touches[0].tapCount >= 1;
+                    _horizontalMovementDeltaTouch = Input.touches[0].deltaPosition.x;
+                }
             }
         }
 

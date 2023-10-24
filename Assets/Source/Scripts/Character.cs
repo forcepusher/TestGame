@@ -25,7 +25,6 @@ namespace Faraway.TestGame
         public void Inject(IInputSource inputSource)
         {
             _inputSource = inputSource;
-            Debug.Log(_inputSource);
         }
 
         private void Awake()
@@ -58,6 +57,7 @@ namespace Faraway.TestGame
 
             // Input
             Move(new Vector3(_inputSource.HorizontalMovementDelta, 0f, 0f));
+            Debug.Log(_inputSource.HorizontalMovementDelta);
 
             Move(Velocity * Time.deltaTime);
         }
