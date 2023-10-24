@@ -12,7 +12,7 @@ namespace Faraway.TestGame
         [SerializeField]
         private float _jumpVelocity = 20f;
         [SerializeField]
-        private float _gravity = -20f;
+        private float _gravity = -40f;
 
         private CharacterController _characterController;
         private readonly List<IEffectBehavior> _effectBehaviors = new();

@@ -40,11 +40,11 @@ namespace Faraway.TestGame
                 if (_runner.Velocity.z + _actualSpeedAdjustment > MaximalSpeed)
                     _actualSpeedAdjustment = MaximalSpeed - _runner.Velocity.z;
 
-                _runner.Velocity = new Vector3(0f, 0f, _runner.Velocity.z + _actualSpeedAdjustment);
+                _runner.Velocity = new Vector3(_runner.Velocity.x, _runner.Velocity.y, _runner.Velocity.z + _actualSpeedAdjustment);
             }
 
             if (wasActive && HasEnded)
-                _runner.Velocity = new Vector3(0f, 0f, _runner.Velocity.z - _actualSpeedAdjustment);
+                _runner.Velocity = new Vector3(_runner.Velocity.x, _runner.Velocity.y, _runner.Velocity.z - _actualSpeedAdjustment);
         }
     }
 }
