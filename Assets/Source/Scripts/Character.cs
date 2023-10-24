@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Reflex.Attributes;
 using UnityEngine;
 
 namespace Faraway.TestGame
@@ -9,6 +10,8 @@ namespace Faraway.TestGame
         [SerializeField]
         private float _speed = 10f;
         [SerializeField]
+        private float _jumpSpeed = 10f;
+        [SerializeField]
         private float _gravity = -20f;
 
         private CharacterController _characterController;
@@ -16,6 +19,12 @@ namespace Faraway.TestGame
 
         public Vector3 Position => transform.position;
         public Vector3 Velocity { get; set; }
+
+        [Inject]
+        private void Inject(IInputSource inputSource)
+        {
+            Debug.Log(inputSource);
+        }
 
         private void Awake()
         {
