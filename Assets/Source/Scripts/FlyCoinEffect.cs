@@ -32,5 +32,7 @@ namespace Faraway.TestGame
                 _runner.Move(new Vector3(0f, heightAdjustmentThisFrame, 0f));
             }
         }
+
+        public void EndEffect() { }
     }
 }
