@@ -3,36 +3,42 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
-    [RequireComponent(typeof(Rigidbody2D))]
-    public class Character : MonoBehaviour, IRigidbody
+    public class Character : MonoBehaviour, IMovable
     {
-        public List<IEffectBehavior> EffectBehaviors;
+        [SerializeField]
+        private ContactFilter2D _contactFilter = new();
 
-        private Rigidbody2D _rigidbody;
+        private readonly List<IEffectBehavior> _effectBehaviors = new();
+
+        public Vector2 Position => transform.position;
+        private Vector2 _velocity = Vector2.zero;
+
+        private Collider2D _collider;
+        private RaycastHit2D[] _raycastHit = new RaycastHit2D[32];
 
         private void Awake()
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
+            _collider = GetComponent<Collider2D>();
         }
 
-        public Vector2 Position { get => _rigidbody.position; set => _rigidbody.position = value; }
-
-        public void Move()
+        private void Update()
         {
-            //_rigidbody.MovePosition
-        }
-
-        private void FixedUpdate()
-        {
-            for (int effectIterator = EffectBehaviors.Count - 1; effectIterator >= 0; effectIterator--)
+            for (int effectIterator = _effectBehaviors.Count - 1; effectIterator >= 0; effectIterator--)
             {
-                IEffectBehavior effectBehavior = EffectBehaviors[effectIterator];
+                IEffectBehavior effectBehavior = _effectBehaviors[effectIterator];
 
-                effectBehavior.Tick();
+                effectBehavior.Tick(Time.deltaTime);
 
                 if (effectBehavior.HasEnded)
-                    EffectBehaviors.RemoveAt(effectIterator);
+                    _effectBehaviors.RemoveAt(effectIterator);
             }
+        }
+
+        public void Move(Vector2 motion)
+        {
+            //_collider.Cast(motion, _raycastHit)
+            transform.Translate(motion);
+            
         }
     }
 }

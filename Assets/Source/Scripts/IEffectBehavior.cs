@@ -2,7 +2,7 @@ namespace Faraway.TestGame
 {
     public interface IEffectBehavior
     {
-        void Tick();
+        void Tick(float deltaTime);
 
         bool HasEnded { get; }
     }
