@@ -11,12 +11,11 @@ namespace Faraway.TestGame
         [SerializeField]
         private float _gravity = -20f;
 
-        public Vector3 Position => transform.position;
-        public Vector3 Velocity { get; set; }
-
+        private CharacterController _characterController;
         private readonly List<IEffectBehavior> _effectBehaviors = new();
 
-        private CharacterController _characterController;
+        public Vector3 Position => transform.position;
+        public Vector3 Velocity { get; set; }
 
         private void Awake()
         {
