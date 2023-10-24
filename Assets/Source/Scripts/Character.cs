@@ -16,14 +16,16 @@ namespace Faraway.TestGame
 
         private CharacterController _characterController;
         private readonly List<IEffectBehavior> _effectBehaviors = new();
+        private IInputSource _inputSource;
 
         public Vector3 Position => transform.position;
         public Vector3 Velocity { get; set; }
 
         [Inject]
-        private void Inject(IInputSource inputSource)
+        public void Inject(IInputSource inputSource)
         {
-            Debug.Log(inputSource);
+            _inputSource = inputSource;
+            Debug.Log(_inputSource);
         }
 
         private void Awake()
@@ -53,6 +55,9 @@ namespace Faraway.TestGame
                 newVelocity.y += _gravity * Time.deltaTime;
 
             Velocity = newVelocity;
+
+            // Input
+            Move(new Vector3(_inputSource.HorizontalMovementDelta, 0f, 0f));
 
             Move(Velocity * Time.deltaTime);
         }
