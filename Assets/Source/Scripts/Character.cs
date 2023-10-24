@@ -10,7 +10,7 @@ namespace Faraway.TestGame
         [SerializeField]
         private float _speed = 10f;
         [SerializeField]
-        private float _jumpSpeed = 10f;
+        private float _jumpVelocity = 20f;
         [SerializeField]
         private float _gravity = -20f;
 
@@ -50,16 +50,17 @@ namespace Faraway.TestGame
             Vector3 newVelocity = Velocity;
             if (_characterController.isGrounded)
                 newVelocity.y = 0f;
-            else
-                newVelocity.y += _gravity * Time.deltaTime;
+
+            newVelocity.y += _gravity * Time.deltaTime;
+
+            // Input
+            var horizontalInput = new Vector3(_inputSource.HorizontalMovementDelta, 0f, 0f);
+            if (_inputSource.Jump && _characterController.isGrounded)
+                newVelocity.y = _jumpVelocity;
 
             Velocity = newVelocity;
 
-            // Input
-            Move(new Vector3(_inputSource.HorizontalMovementDelta, 0f, 0f));
-            Debug.Log(_inputSource.HorizontalMovementDelta);
-
-            Move(Velocity * Time.deltaTime);
+            Move(Velocity * Time.deltaTime + horizontalInput);
         }
 
         public void Move(Vector3 motion)
