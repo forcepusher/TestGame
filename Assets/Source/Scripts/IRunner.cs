@@ -7,12 +7,12 @@ namespace Faraway.TestGame
         /// <remarks>
         /// Required for flying.
         /// </remarks>
-        void Move(Vector2 motion);
+        void Move(Vector3 motion);
 
         /// <remarks>
         /// Required for flying.
         /// </remarks>
-        Vector2 Position { get; }
+        Vector3 Position { get; }
 
         /// <remarks>
         /// Required for reducing speed.<br/>
