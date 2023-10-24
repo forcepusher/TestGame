@@ -4,8 +4,7 @@ namespace Faraway.TestGame
 {
     public class FlyCoinEffect : IEffectBehavior
     {
-        private const float FlyHeight = 3f;
-        private const float FlyTweenVelocity = 40f;
+        private const float FlyHeight = 4f;
 
         private readonly IRunner _runner;
         private readonly float _duration;
@@ -22,12 +21,13 @@ namespace Faraway.TestGame
 
         public void Tick(float deltaTime)
         {
-            if (_runner.Position.y < FlyHeight)
-                _runner.Move(new Vector3(0f, FlyTweenVelocity * deltaTime, 0f));
-
-            Debug.Log("MOVEWFEJWLFIJEWL");
-
             _elapsedTime += deltaTime;
+
+            _runner.Velocity = new Vector3(_runner.Velocity.x, 0f, _runner.Velocity.z);
+            float distanceToFlyHeight = FlyHeight - _runner.Position.y;
+            _runner.Move(new Vector3(0f, distanceToFlyHeight, 0f));
+
+            Debug.Log(_elapsedTime);
         }
     }
 }

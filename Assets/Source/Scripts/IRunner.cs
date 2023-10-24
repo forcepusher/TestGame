@@ -4,20 +4,8 @@ namespace Faraway.TestGame
 {
     public interface IRunner : IEffectTarget
     {
-        /// <remarks>
-        /// Required for flying.
-        /// </remarks>
-        void Move(Vector3 motion);
-
-        /// <remarks>
-        /// Required for flying.
-        /// </remarks>
         Vector3 Position { get; }
-
-        /// <remarks>
-        /// Required for reducing speed.<br/>
-        /// Moving backwards as a speed reduction would be a crutch.
-        /// </remarks>
-        float Speed { get; set; }
+        Vector3 Velocity { get; set; }
+        void Move(Vector3 motion);
     }
 }

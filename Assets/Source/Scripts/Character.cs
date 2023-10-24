@@ -11,9 +11,8 @@ namespace Faraway.TestGame
         [SerializeField]
         private float _gravity = -20f;
 
-        public float Speed { get => _speed; set => _speed = value; }
         public Vector3 Position => transform.position;
-        private float _verticalVelocity = 0f;
+        public Vector3 Velocity { get; set; }
 
         private readonly List<IEffectBehavior> _effectBehaviors = new();
 
@@ -22,6 +21,7 @@ namespace Faraway.TestGame
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
+            Velocity = new Vector3(0f, 0f, _speed);
         }
 
         private void Update()
@@ -37,12 +37,16 @@ namespace Faraway.TestGame
                     _effectBehaviors.RemoveAt(effectIterator);
             }
 
-            Move(new Vector3(0f, _verticalVelocity * Time.deltaTime, Speed * Time.deltaTime));
-
+            // Gravity
+            Vector3 newVelocity = Velocity;
             if (_characterController.isGrounded)
-                _verticalVelocity = 0f;
+                newVelocity.y = 0f;
             else
-                _verticalVelocity += _gravity * Time.deltaTime;
+                newVelocity.y += _gravity * Time.deltaTime;
+
+            Velocity = newVelocity;
+
+            Move(Velocity * Time.deltaTime);
         }
 
         public void Move(Vector3 motion)
