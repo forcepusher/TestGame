@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Faraway.TestGame
 {
     [RequireComponent(typeof(CharacterController))]
-    public class Character : MonoBehaviour, IRunner, IEffectTarget
+    public class Character : MonoBehaviour, IRunner
     {
         [SerializeField]
         private float _speed = 10f;
@@ -27,7 +27,7 @@ namespace Faraway.TestGame
         public Vector3 Velocity { get; set; }
 
         /// <summary>
-        /// Clamped velocity within <see cref="_minimumSpeed"/> and <see cref="_maximumSpeed"/> limits.<br/>
+        /// Clamps forward velocity within <see cref="_minimumSpeed"/> and <see cref="_maximumSpeed"/> limits.<br/>
         /// Used to avoid undesired behavior like going backwards after picking up multiple speed reductions.
         /// </summary>
         private Vector3 ClampedVelocity => new Vector3(Velocity.x, Velocity.y, Mathf.Clamp(Velocity.z, _minimumSpeed, _maximumSpeed));
