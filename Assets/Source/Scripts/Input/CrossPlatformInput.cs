@@ -34,6 +34,7 @@ namespace Faraway.TestGame
         private bool _jumpTouch;
 
         private double _touchStartTime;
+        private Vector2 _previousAverageTouchPosition;
 
         private async void TickLoop()
         {
@@ -49,7 +50,10 @@ namespace Faraway.TestGame
 
                 if (Input.touchCount > 0)
                 {
-                    _horizontalMovementDeltaTouch = Input.touches[0].deltaPosition.x / Screen.width * TouchMovementSensitivity;
+                    Vector2 averageTouchPosition = AverageTouchPositionNormalizedCoordinates;
+                    Vector2 deltaPosition = averageTouchPosition - _previousAverageTouchPosition;
+                    _horizontalMovementDeltaTouch = deltaPosition.x * TouchMovementSensitivity;
+                    _previousAverageTouchPosition = averageTouchPosition;
 
                     if (Input.GetTouch(0).phase == TouchPhase.Began)
                         _touchStartTime = Time.realtimeSinceStartupAsDouble;
@@ -65,5 +69,19 @@ namespace Faraway.TestGame
         {
             _disposed = true;
         }
+
+        private Vector2 AverageTouchPositionPixelCoordinates
+        {
+            get
+            {
+                Vector2 positionSum = Vector2.zero;
+                foreach (Touch touches in Input.touches)
+                    positionSum += touches.rawPosition;
+
+                return positionSum / Input.touchCount;
+            }
+        }
+
+        private Vector2 AverageTouchPositionNormalizedCoordinates => AverageTouchPositionPixelCoordinates / new Vector2(Screen.width, Screen.height);
     }
 }
