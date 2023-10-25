@@ -558,10 +558,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5edac7df524914eaea3c38a71560d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinPrefabs:
-  - {fileID: 8055716550757744055, guid: dae30785d119ffb4cb36ad1be38d6073, type: 3}
-  - {fileID: 6394278511288233640, guid: 1ebce3f80d47a674892b54f0c7e9ba22, type: 3}
-  - {fileID: 8420985477245859480, guid: 870d97a29f1779d46a2c6e58c42f3adf, type: 3}
+  _levelPickups:
+  - Prefab: {fileID: 6394278511288233640, guid: 1ebce3f80d47a674892b54f0c7e9ba22, type: 3}
+    SpawnChance: 45
+  - Prefab: {fileID: 8420985477245859480, guid: 870d97a29f1779d46a2c6e58c42f3adf, type: 3}
+    SpawnChance: 45
+  - Prefab: {fileID: 8055716550757744055, guid: dae30785d119ffb4cb36ad1be38d6073, type: 3}
+    SpawnChance: 10
 --- !u!1 &1334612529
 GameObject:
   m_ObjectHideFlags: 0
