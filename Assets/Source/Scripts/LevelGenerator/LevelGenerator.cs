@@ -15,6 +15,8 @@ namespace Faraway.TestGame
         private MainCamera _mainCamera;
 
         [SerializeField]
+        private GameObject _jumpObstacle;
+        [SerializeField]
         private List<LevelPickup> _levelPickups = new();
 
         private float _generatedDistance = 0;

@@ -25,12 +25,13 @@ namespace Faraway.TestGame
         // IRunner implementation
         public Vector3 Position => transform.position;
         public Vector3 Velocity { get; set; }
+        public bool IsDead { get; set; } = false;
 
         /// <summary>
         /// Clamps forward velocity within <see cref="_minimumSpeed"/> and <see cref="_maximumSpeed"/> limits.<br/>
         /// Used to avoid undesired behavior like going backwards after picking up multiple speed reductions.
         /// </summary>
-        private Vector3 ClampedVelocity => new Vector3(Velocity.x, Velocity.y, Mathf.Clamp(Velocity.z, _minimumSpeed, _maximumSpeed));
+        private Vector3 ClampedVelocity => new(Velocity.x, Velocity.y, Mathf.Clamp(Velocity.z, _minimumSpeed, _maximumSpeed));
 
         [Inject]
         public void Inject(IInputSource inputSource)
@@ -46,6 +47,9 @@ namespace Faraway.TestGame
 
         private void Update()
         {
+            if (IsDead)
+                return;
+
             // Support for stacking coin behaviors
             for (int effectIterator = _effectBehaviors.Count - 1; effectIterator >= 0; effectIterator--)
             {
@@ -64,7 +68,7 @@ namespace Faraway.TestGame
 
             newVelocity.y += _gravity * Time.deltaTime;
 
-            // Input
+            // Horizontal movement and jump input
             var horizontalInput = new Vector3(_inputSource.HorizontalMovementDelta, 0f, 0f);
             if (_inputSource.Jump && _characterController.isGrounded)
                 newVelocity.y = _jumpVelocity;
