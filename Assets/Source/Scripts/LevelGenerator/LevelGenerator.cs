@@ -64,30 +64,36 @@ namespace Faraway.TestGame
                 {
                     // Pickup generation
 
-                    float distanceFromLastPickup = Random.Range(MinimumDistanceBetweenPickups, MaximumDistanceBetweenPickups);
-
-                    // Select random pickup
-                    GameObject selectedPickup = null;
-                    float pickupRoll = Random.Range(0, _totalPickupRoll);
-                    float minimumRollToSelect = 0;
-                    foreach (LevelPickup levelPickup in _levelPickups)
-                    {
-                        if (pickupRoll <= levelPickup.SpawnChance + minimumRollToSelect)
-                        {
-                            selectedPickup = levelPickup.Prefab;
-                            break;
-                        }
-
-                        minimumRollToSelect += levelPickup.SpawnChance;
-                    }
+                    GameObject selectedPickup = SelectRandomPickup();
 
                     // Spawn random pickup
                     GameObject pickupGameObject = Instantiate(selectedPickup);
-                    pickupGameObject.transform.position = new Vector3(Random.Range(-MaximumHorizontalPickupOffset, MaximumHorizontalPickupOffset), PickupHeight, _generatedDistance + distanceFromLastPickup);
+                    float newPickupDistance = Random.Range(MinimumDistanceBetweenPickups, MaximumDistanceBetweenPickups);
+                    pickupGameObject.transform.position = new Vector3(Random.Range(-MaximumHorizontalPickupOffset, MaximumHorizontalPickupOffset), PickupHeight, _generatedDistance + newPickupDistance);
 
-                    _generatedDistance += distanceFromLastPickup;
+                    _generatedDistance += newPickupDistance;
                 }
             }
+        }
+
+        private GameObject SelectRandomPickup()
+        {
+            GameObject selectedPickup = null;
+            float pickupRoll = Random.Range(0, _totalPickupRoll);
+            float minimumRollToSelect = 0;
+
+            foreach (LevelPickup levelPickup in _levelPickups)
+            {
+                if (pickupRoll <= levelPickup.SpawnChance + minimumRollToSelect)
+                {
+                    selectedPickup = levelPickup.Prefab;
+                    break;
+                }
+
+                minimumRollToSelect += levelPickup.SpawnChance;
+            }
+
+            return selectedPickup;
         }
     }
 }
