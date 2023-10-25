@@ -1,5 +1,6 @@
 # TestGame
   
+Веб билд можно поиграть тут https://forcepusher.github.io/test/  
 В папке Builds/Android билд для Android.  
 Код в папке Assets/Source.  
   
