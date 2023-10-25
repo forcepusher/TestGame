@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
+    /// <summary>
+    /// Container installer script utilizing Reflex DI framework.
+    /// </summary>
     public class SceneInstaller : MonoBehaviour, IInstaller
     {
         [SerializeField]

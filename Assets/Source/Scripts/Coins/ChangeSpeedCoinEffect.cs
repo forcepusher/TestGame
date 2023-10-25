@@ -4,8 +4,10 @@ namespace Faraway.TestGame
 {
     /// <summary>
     /// Effect from a <see cref="ChangeSpeedCoin"/>.<br/>
-    /// Effects from this coin can be stacked, each effect has its own duration.
     /// </summary>
+    /// <remarks>
+    /// Effects from this coin can be stacked, each effect has its own duration.
+    /// </remarks>
     public class ChangeSpeedCoinEffect : IEffectBehavior
     {
         private readonly IRunner _runner;

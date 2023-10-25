@@ -4,8 +4,10 @@ namespace Faraway.TestGame
 {
     /// <summary>
     /// Effect from a <see cref="FlyCoin"/>.<br/>
-    /// Effect from this coin can be stacked with other coin effects.
     /// </summary>
+    /// <remarks>
+    /// Effect from this coin can be stacked with other coin effects.
+    /// </remarks>
     public class FlyCoinEffect : IEffectBehavior
     {
         private const float FlyHeight = 3f;
