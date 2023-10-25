@@ -13,8 +13,8 @@ namespace Faraway.TestGame
         private const float MaximumHorizontalPickupOffset = 4.5f;
         private const float PickupHeight = 0.8f;
 
-        private const float MinimumDistanceBetweenObstacles = 10f;
-        private const float MaximumDistanceBetweenObstacles = 50f;
+        private const float MinimumDistanceBetweenObstacles = 20f;
+        private const float MaximumDistanceBetweenObstacles = 100f;
         private const float ObstacleHeight = 0.5f;
 
         private MainCamera _mainCamera;
