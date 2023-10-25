@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
+    /// <summary>
+    /// Interface for implementing pickup effects.<br/>
+    /// Exposes required properties and methods for effects.
+    /// </summary>
     public interface IRunner : IEffectTarget
     {
         Vector3 Position { get; }

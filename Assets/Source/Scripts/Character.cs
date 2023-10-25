@@ -13,13 +13,24 @@ namespace Faraway.TestGame
         private float _jumpVelocity = 20f;
         [SerializeField]
         private float _gravity = -40f;
+        [SerializeField]
+        private float _minimumSpeed = 3f;
+        [SerializeField]
+        private float _maximumSpeed = 40f;
 
         private CharacterController _characterController;
         private readonly List<IEffectBehavior> _effectBehaviors = new();
         private IInputSource _inputSource;
 
+        // IRunner implementation
         public Vector3 Position => transform.position;
         public Vector3 Velocity { get; set; }
+
+        /// <summary>
+        /// Clamped velocity within <see cref="_minimumSpeed"/> and <see cref="_maximumSpeed"/> limits.<br/>
+        /// Used to avoid undesired behavior like going backwards after picking up multiple speed reductions.
+        /// </summary>
+        private Vector3 ClampedVelocity => new Vector3(Velocity.x, Velocity.y, Mathf.Clamp(Velocity.z, _minimumSpeed, _maximumSpeed));
 
         [Inject]
         public void Inject(IInputSource inputSource)
@@ -60,7 +71,7 @@ namespace Faraway.TestGame
 
             Velocity = newVelocity;
 
-            Move(Velocity * Time.deltaTime + horizontalInput);
+            Move(ClampedVelocity * Time.deltaTime + horizontalInput);
         }
 
         public void Move(Vector3 motion)
