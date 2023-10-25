@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
+    /// <summary>
+    /// Kill prim obstacle that kills a character.
+    /// </summary>
     public class JumpObstacle : MonoBehaviour
     {
         private void OnTriggerEnter(Collider otherCollider)

@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
+    /// <summary>
+    /// Infinite runner level generator. Generates pickups and obstacles at run time based on camera position.
+    /// </summary>
+    /// <remarks>
+    /// Supports creating additional coins without modifying the source code.
+    /// </remarks>
     public class LevelGenerator : MonoBehaviour
     {
         private const float GenerationAheadDistance = 100f;
@@ -75,6 +81,7 @@ namespace Faraway.TestGame
                         minimumRollToSelect += levelPickup.SpawnChance;
                     }
 
+                    // Spawn random pickup
                     GameObject pickupGameObject = Instantiate(selectedPickup);
                     pickupGameObject.transform.position = new Vector3(Random.Range(-MaximumHorizontalPickupOffset, MaximumHorizontalPickupOffset), PickupHeight, _generatedDistance + distanceFromLastPickup);
 

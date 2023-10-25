@@ -6,6 +6,12 @@ using UnityEngine.UI;
 
 namespace Faraway.TestGame
 {
+    /// <summary>
+    /// Canvas that that shows up on player death with stats and a restart button.
+    /// </summary>
+    /// <remarks>
+    /// Uses <see cref="UniRx"/> <see cref="Observable"/>s.
+    /// </remarks>
     public class GameOverCanvas : MonoBehaviour
     {
         [SerializeField]

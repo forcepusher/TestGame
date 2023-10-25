@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
+    /// <summary>
+    /// Player script responsible for movement controls and maintaining his <see cref="IEffectBehavior"/>s.
+    /// </summary>
     [RequireComponent(typeof(CharacterController))]
     public class Character : MonoBehaviour, IRunner
     {

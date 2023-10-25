@@ -3,6 +3,12 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
+    /// <summary>
+    /// Follower script attached to a main <see cref="Camera"/>.<br/>
+    /// </summary>
+    /// <remarks>
+    /// Maintains an initial camera offset from character.
+    /// </remarks>
     public class MainCamera : MonoBehaviour
     {
         private IRunner _followTarget;
