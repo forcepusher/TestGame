@@ -15,7 +15,6 @@ namespace Faraway.TestGame
             containerDescriptor.AddSingleton(typeof(CrossPlatformInput), typeof(IInputSource));
             containerDescriptor.AddInstance(_mainCamera);
             containerDescriptor.AddInstance(_playerCharacter, typeof(IRunner));
-            Application.targetFrameRate = 60;
         }
     }
 }
