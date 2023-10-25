@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
+    /// <summary>
+    /// Effect from a <see cref="ChangeSpeedCoin"/>.<br/>
+    /// Effects from this coin can be stacked, each effect has its own duration.
+    /// </summary>
     public class ChangeSpeedCoinEffect : IEffectBehavior
     {
         private readonly IRunner _runner;

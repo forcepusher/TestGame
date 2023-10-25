@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
+    /// <summary>
+    /// Effect from a <see cref="FlyCoin"/>.<br/>
+    /// Effect from this coin can be stacked with other coin effects.
+    /// </summary>
     public class FlyCoinEffect : IEffectBehavior
     {
         private const float FlyHeight = 3f;

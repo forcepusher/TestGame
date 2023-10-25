@@ -4,6 +4,12 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
+    /// <summary>
+    /// It's an <see cref="IInputSource"/> implementing both Mouse and Touch controls.
+    /// </summary>
+    /// <remarks>
+    /// Executes in an async/await loop utilizing Unity's <see cref="UnitySynchronizationContext"/>.
+    /// </remarks>
     public class CrossPlatformInput : IInputSource, IDisposable
     {
         private const float MouseMovementSensitivity = 100f;

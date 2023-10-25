@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
+    /// <summary>
+    /// Coin pickup. Creates <see cref="FlyCoinEffect"/> and adds it to Effects.
+    /// </summary>
     public class FlyCoin : MonoBehaviour
     {
         [SerializeField]
@@ -9,6 +12,7 @@ namespace Faraway.TestGame
 
         private void OnTriggerEnter(Collider enteredCollider)
         {
+            // IRunner is also an IEffectTarget
             IRunner runner = enteredCollider.GetComponent<IRunner>();
             if (runner != null)
             {
