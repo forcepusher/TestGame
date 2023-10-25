@@ -6,11 +6,16 @@ namespace Faraway.TestGame
 {
     public class LevelGenerator : MonoBehaviour
     {
-        private const float GenerationAheadDistance = 40f;
+        private const float GenerationAheadDistance = 100f;
+
         private const float MinimumDistanceBetweenPickups = 2f;
         private const float MaximumDistanceBetweenPickups = 10f;
         private const float MaximumHorizontalPickupOffset = 4.5f;
         private const float PickupHeight = 0.8f;
+
+        private const float MinimumDistanceBetweenObstacles = 10f;
+        private const float MaximumDistanceBetweenObstacles = 50f;
+        private const float ObstacleHeight = 0.5f;
 
         private MainCamera _mainCamera;
 
@@ -20,6 +25,7 @@ namespace Faraway.TestGame
         private List<LevelPickup> _levelPickups = new();
 
         private float _generatedDistance = 0;
+        private float _nextObstacleDistance = MaximumDistanceBetweenObstacles;
         private float _totalPickupRoll;
 
         [Inject]
@@ -38,27 +44,42 @@ namespace Faraway.TestGame
         {
             while (_generatedDistance < _mainCamera.transform.position.z + GenerationAheadDistance)
             {
-                float distanceFromLastPickup = Random.Range(MinimumDistanceBetweenPickups, MaximumDistanceBetweenPickups);
-
-                // Select random pickup
-                GameObject selectedPickup = null;
-                float pickupRoll = Random.Range(0, _totalPickupRoll);
-                float minimumRollToSelect = 0;
-                foreach (LevelPickup levelPickup in _levelPickups)
+                if (_generatedDistance >= _nextObstacleDistance)
                 {
-                    if (pickupRoll <= levelPickup.SpawnChance + minimumRollToSelect)
+                    // Obstacle generation
+
+                    GameObject obstacleGameObject = Instantiate(_jumpObstacle);
+                    obstacleGameObject.transform.position = new Vector3(0f, ObstacleHeight, _nextObstacleDistance);
+                    _nextObstacleDistance += Random.Range(MinimumDistanceBetweenObstacles, MaximumDistanceBetweenObstacles);
+
+                    _generatedDistance += 3f;
+                }
+                else
+                {
+                    // Pickup generation
+
+                    float distanceFromLastPickup = Random.Range(MinimumDistanceBetweenPickups, MaximumDistanceBetweenPickups);
+
+                    // Select random pickup
+                    GameObject selectedPickup = null;
+                    float pickupRoll = Random.Range(0, _totalPickupRoll);
+                    float minimumRollToSelect = 0;
+                    foreach (LevelPickup levelPickup in _levelPickups)
                     {
-                        selectedPickup = levelPickup.Prefab;
-                        break;
+                        if (pickupRoll <= levelPickup.SpawnChance + minimumRollToSelect)
+                        {
+                            selectedPickup = levelPickup.Prefab;
+                            break;
+                        }
+
+                        minimumRollToSelect += levelPickup.SpawnChance;
                     }
 
-                    minimumRollToSelect += levelPickup.SpawnChance;
+                    GameObject pickupGameObject = Instantiate(selectedPickup);
+                    pickupGameObject.transform.position = new Vector3(Random.Range(-MaximumHorizontalPickupOffset, MaximumHorizontalPickupOffset), PickupHeight, _generatedDistance + distanceFromLastPickup);
+
+                    _generatedDistance += distanceFromLastPickup;
                 }
-
-                GameObject pickupGameObject = Instantiate(selectedPickup);
-                pickupGameObject.transform.position = new Vector3(Random.Range(-MaximumHorizontalPickupOffset, MaximumHorizontalPickupOffset), PickupHeight, _generatedDistance + distanceFromLastPickup);
-
-                _generatedDistance += distanceFromLastPickup;
             }
         }
     }
