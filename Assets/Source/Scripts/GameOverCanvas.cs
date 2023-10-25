@@ -1,5 +1,7 @@
 using Reflex.Attributes;
+using UniRx;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Faraway.TestGame
@@ -23,6 +25,13 @@ namespace Faraway.TestGame
         private void Awake()
         {
             _canvas = GetComponent<Canvas>();
+
+            _restartButton.OnClickAsObservable().Subscribe(_ =>
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            });
+
+
         }
     }
 }
