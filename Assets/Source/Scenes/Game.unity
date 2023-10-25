@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _restartButton: {fileID: 1949327531}
-  _distanceText: {fileID: 0}
+  _distanceText: {fileID: 1406873015}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

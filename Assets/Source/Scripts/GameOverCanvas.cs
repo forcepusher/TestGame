@@ -25,13 +25,18 @@ namespace Faraway.TestGame
         private void Awake()
         {
             _canvas = GetComponent<Canvas>();
+            _canvas.enabled = false;
 
             _restartButton.OnClickAsObservable().Subscribe(_ =>
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             });
 
-
+            Observable.EveryUpdate().First(_ => _runner.IsDead).Subscribe(_ =>
+            {
+                _canvas.enabled = true;
+                _distanceText.text = $"Distance: {Mathf.RoundToInt(_runner.Position.z)} meters";
+            });
         }
     }
 }
