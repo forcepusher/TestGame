@@ -1,18 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+using Reflex.Attributes;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class GameOverCanvas : MonoBehaviour
+namespace Faraway.TestGame
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GameOverCanvas : MonoBehaviour
     {
-        
-    }
+        [SerializeField]
+        private Button _restartButton;
+        [SerializeField]
+        private Text _distanceText;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private Canvas _canvas;
+        private IRunner _runner;
+
+        [Inject]
+        public void Inject(IRunner runner)
+        {
+            _runner = runner;
+        }
+
+        private void Awake()
+        {
+            _canvas = GetComponent<Canvas>();
+        }
     }
 }
