@@ -94,7 +94,7 @@ namespace Faraway.TestGame
             for (int effectIteration = _effectBehaviors.Count - 1; effectIteration >= 0; effectIteration--)
             {
                 IEffectBehavior existingEffectBehavior = _effectBehaviors[effectIteration];
-                if (existingEffectBehavior.Identifier == effectBehavior.Identifier)
+                if (existingEffectBehavior.StackingIdentifier == effectBehavior.StackingIdentifier)
                 {
                     existingEffectBehavior.End();
                     _effectBehaviors.RemoveAt(effectIteration);
@@ -102,6 +102,7 @@ namespace Faraway.TestGame
             }
 
             _effectBehaviors.Add(effectBehavior);
+            effectBehavior.Start();
         }
     }
 }

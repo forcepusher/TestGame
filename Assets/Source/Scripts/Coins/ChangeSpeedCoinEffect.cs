@@ -23,7 +23,7 @@ namespace Faraway.TestGame
             _speedAdjustment = speedAdjustment;
         }
 
-        public int Identifier { get; } = 1;
+        public int StackingIdentifier { get; } = 1;
 
         public bool OutOfTime => _elapsedTime >= _duration;
 
