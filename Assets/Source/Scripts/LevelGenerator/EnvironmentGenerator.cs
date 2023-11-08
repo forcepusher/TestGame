@@ -1,19 +1,33 @@
+using Reflex.Attributes;
 using UnityEngine;
 
 namespace Faraway.TestGame
 {
     public class EnvironmentGenerator : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        private const float GenerationAheadDistance = 100f;
 
+        private GameObject _roadPiecePrefab;
+        private GameObject _waterPiecePrefab;
+
+        private float _lastRoadPieceZPosition;
+        private float _lastWaterPieceZPosition;
+
+        private MainCamera _mainCamera;
+
+        [Inject]
+        public void Inject(MainCamera mainCamera)
+        {
+            _mainCamera = mainCamera;
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
+            float generationDistance = _mainCamera.transform.position.z + GenerationAheadDistance;
+            while (_lastRoadPieceZPosition < generationDistance)
+            {
 
+            }
         }
     }
 }
