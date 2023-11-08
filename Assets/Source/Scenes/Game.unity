@@ -760,7 +760,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 100
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -892,7 +892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 683429082783461935, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 135.1
+      value: 135
       objectReference: {fileID: 0}
     - target: {fileID: 683429082783461935, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1469,7 +1469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 683429082783461935, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 165.1
+      value: 165
       objectReference: {fileID: 0}
     - target: {fileID: 683429082783461935, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1526,7 +1526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 683429082783461935, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 105.100006
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 683429082783461935, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1644,7 +1644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 683429082783461935, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 120.100006
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 683429082783461935, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2634,7 +2634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 683429082783461935, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 150.1
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 683429082783461935, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2808,7 +2808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 683429082783461935, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 90.100006
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 683429082783461935, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
       propertyPath: m_LocalRotation.w
