@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 namespace Faraway.TestGame
 {
-    public class EnvironmentPiece : MonoBehaviour
+    [Serializable]
+    public struct EnvironmentPiece
     {
-
+        public float Distance;
+        public GameObject Prefab;
     }
 }

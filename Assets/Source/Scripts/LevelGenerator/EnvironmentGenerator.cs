@@ -7,8 +7,10 @@ namespace Faraway.TestGame
     {
         private const float GenerationAheadDistance = 100f;
 
-        private GameObject _roadPiecePrefab;
-        private GameObject _waterPiecePrefab;
+        [SerializeField]
+        private EnvironmentPiece _roadPiece;
+        [SerializeField]
+        private EnvironmentPiece _waterPiece;
 
         private float _lastRoadPieceZPosition;
         private float _lastWaterPieceZPosition;
@@ -26,7 +28,8 @@ namespace Faraway.TestGame
             float generationDistance = _mainCamera.transform.position.z + GenerationAheadDistance;
             while (_lastRoadPieceZPosition < generationDistance)
             {
-
+                Instantiate(_roadPiece.Prefab, new Vector3(0f, 0f, _lastRoadPieceZPosition), Quaternion.identity);
+                _lastRoadPieceZPosition += _roadPiece.Distance;
             }
         }
     }

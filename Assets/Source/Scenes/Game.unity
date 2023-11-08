@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 27341296}
+  - component: {fileID: 27341297}
   m_Layer: 0
   m_Name: EnvironmentGenerator
   m_TagString: Untagged
@@ -148,12 +149,30 @@ Transform:
   m_GameObject: {fileID: 27341295}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.42027614, y: 2.6463099, z: 31.484724}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &27341297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27341295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96302660d0f54d6458c856890972c628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roadPiece:
+    Distance: 15
+    Prefab: {fileID: 4689095975604109075, guid: ce9d237ed66b6294fb4ebb10c6bb4d38, type: 3}
+  _waterPiece:
+    Distance: 30
+    Prefab: {fileID: 6776551821524259488, guid: dd6286f7531fb424e89067844cd1d857, type: 3}
 --- !u!1001 &199889619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1425,7 +1444,7 @@ Transform:
   m_GameObject: {fileID: 923539063}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.085845, y: 2.383962, z: 0.87067163}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
