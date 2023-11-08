@@ -24,7 +24,7 @@ namespace Faraway.TestGame
             _duration = duration;
         }
 
-        public int Identifier { get; } = 2;
+        public int StackingIdentifier { get; } = 2;
 
         public bool OutOfTime => _elapsedTime >= _duration;
 
