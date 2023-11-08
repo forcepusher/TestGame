@@ -1,10 +1,7 @@
 namespace Faraway.TestGame
 {
-    public class SprintRunBehavior : IBehavior
+    public class SprintRunBehavior : CharacterBehavior
     {
-        public void Tick()
-        {
 
-        }
     }
 }

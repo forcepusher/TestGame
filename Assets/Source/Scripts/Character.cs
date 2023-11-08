@@ -10,10 +10,15 @@ namespace Faraway.TestGame
     [RequireComponent(typeof(CharacterController))]
     public class Character : MonoBehaviour, IRunner
     {
+        private const float Speed = 10f;
+        private const float JumpVelocity = 20f;
+        private const float Gravity = -40f;
+
         private CharacterController _characterController;
         private IBehavior _characterBehavior;
 
         // IRunner implementation
+        public Vector3 Velocity { get; set; }
         public Vector3 Position => transform.position;
         public bool IsDead { get; set; } = false;
         public bool IsGrounded => _characterController.isGrounded;
@@ -34,6 +39,22 @@ namespace Faraway.TestGame
         private void Update()
         {
             _characterBehavior.Tick();
+
+            // Gravity
+            Vector3 newVelocity = Velocity;
+            if (_characterController.isGrounded)
+                newVelocity.y = 0f;
+
+            newVelocity.y += Gravity * Time.deltaTime;
+
+            // Horizontal movement and jump input
+            var horizontalInput = new Vector3(_inputSource.HorizontalMovementDelta, 0f, 0f);
+            if (_inputSource.Jump && _characterController.isGrounded)
+                newVelocity.y = _jumpVelocity;
+
+            Velocity = newVelocity;
+
+            Move(ClampedVelocity * Time.deltaTime + horizontalInput);
         }
 
         public void Move(Vector3 motion)
