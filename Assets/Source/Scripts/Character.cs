@@ -22,6 +22,7 @@ namespace Faraway.TestGame
         private float _maximumSpeed = 40f;
 
         private CharacterController _characterController;
+        private Animator _animator;
         private readonly List<IEffectBehavior> _effectBehaviors = new();
         private IInputSource _inputSource;
 
@@ -39,6 +40,7 @@ namespace Faraway.TestGame
         private void Awake()
         {
             _characterController = GetComponent<CharacterController>();
+            _animator = GetComponentInChildren<Animator>();
             Velocity = new Vector3(0f, 0f, _speed);
         }
 
@@ -76,6 +78,8 @@ namespace Faraway.TestGame
             Velocity = newVelocity;
 
             Move(Velocity * Time.deltaTime + horizontalInput);
+
+            _animator.SetFloat("RunSpeed", Velocity.z);
         }
 
         public void Move(Vector3 motion)
