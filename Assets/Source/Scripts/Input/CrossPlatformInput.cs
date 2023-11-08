@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using BananaParty.TouchInput;
 using UnityEngine;
 
 namespace Faraway.TestGame
@@ -13,8 +15,10 @@ namespace Faraway.TestGame
     public class CrossPlatformInput : IInputSource, IDisposable
     {
         private const float MouseMovementSensitivity = 150f;
-        private const float TouchMovementSensitivity = 10f;
-        private const float TapTimeThreshold = 0.15f;
+        private const float SwipeTimeThreshold = 0.3f;
+        private const float SwipePositionDeltaThreshold = 0.2f;
+        //private const float TouchMovementSensitivity = 10f;
+        //private const float TapTimeThreshold = 0.15f;
 
         private bool _disposed = false;
 
@@ -33,7 +37,10 @@ namespace Faraway.TestGame
         private bool _jumpKeyboard => Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0);
         private bool _jumpTouch;
 
-        private double _touchStartTime;
+        //private double _touchStartTime;
+
+        private Touchscreen _touchscreen = new();
+        private List<Finger> _fingers;
 
         private async void TickLoop()
         {
@@ -44,20 +51,39 @@ namespace Faraway.TestGame
                 if (_disposed)
                     return;
 
-                _jumpTouch = false;
-                _horizontalMovementDeltaTouch = 0f;
+                _touchscreen.PollChanges(Time.unscaledDeltaTime);
 
-                if (Input.touchCount > 0)
+                while (_touchscreen.HasNewTouches)
+                    _fingers.Add(_touchscreen.GetNextNewTouch());
+
+                foreach (Finger finger in _fingers)
                 {
-                    _horizontalMovementDeltaTouch = Input.touches[0].deltaPosition.x / Screen.width * TouchMovementSensitivity;
-
-                    if (Input.GetTouch(0).phase == TouchPhase.Began)
-                        _touchStartTime = Time.realtimeSinceStartupAsDouble;
-
-                    if (Input.GetTouch(0).phase == TouchPhase.Ended)
-                        if (Time.realtimeSinceStartupAsDouble - _touchStartTime <= TapTimeThreshold)
-                            _jumpTouch = true;
+                    if (finger.Phase == FingerPhase.Lifted)
+                    {
+                        if (finger.ElapsedTime <= SwipeTimeThreshold)
+                        {
+                            if ((finger.NormalizedPosition - finger.NormalizedStartPosition).magnitude >= SwipePositionDeltaThreshold)
+                            {
+                                
+                            }
+                        }
+                    }
                 }
+
+                //_jumpTouch = false;
+                //_horizontalMovementDeltaTouch = 0f;
+
+                //if (Input.touchCount > 0)
+                //{
+                //    _horizontalMovementDeltaTouch = Input.touches[0].deltaPosition.x / Screen.width * TouchMovementSensitivity;
+
+                //    if (Input.GetTouch(0).phase == TouchPhase.Began)
+                //        _touchStartTime = Time.realtimeSinceStartupAsDouble;
+
+                //    if (Input.GetTouch(0).phase == TouchPhase.Ended)
+                //        if (Time.realtimeSinceStartupAsDouble - _touchStartTime <= TapTimeThreshold)
+                //            _jumpTouch = true;
+                //}
             }
         }
 
