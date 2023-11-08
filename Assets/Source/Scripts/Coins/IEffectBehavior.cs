@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Faraway.TestGame
 {
     /// <summary>
@@ -12,5 +14,7 @@ namespace Faraway.TestGame
         void Tick(float deltaTime);
         void End();
         bool OutOfTime { get; }
+        float TimeRemaining { get; }
+        Color BuffColor { get; }
     }
 }

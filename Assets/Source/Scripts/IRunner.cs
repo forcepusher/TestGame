@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Faraway.TestGame
@@ -12,5 +13,6 @@ namespace Faraway.TestGame
         Vector3 Velocity { get; set; }
         void Move(Vector3 motion);
         bool IsDead { get; set; }
+        List<IEffectBehavior> EffectBehaviors { get; }
     }
 }

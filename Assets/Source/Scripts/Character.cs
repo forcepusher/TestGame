@@ -23,13 +23,13 @@ namespace Faraway.TestGame
 
         private CharacterController _characterController;
         private Animator _animator;
-        private readonly List<IEffectBehavior> _effectBehaviors = new();
         private IInputSource _inputSource;
 
         // IRunner implementation
         public Vector3 Position => transform.position;
         public Vector3 Velocity { get; set; }
         public bool IsDead { get; set; } = false;
+        public List<IEffectBehavior> EffectBehaviors { get; } = new();
 
         [Inject]
         public void Inject(IInputSource inputSource)
@@ -50,16 +50,16 @@ namespace Faraway.TestGame
                 return;
 
             // Support for stacking coin behaviors
-            for (int effectIteration = _effectBehaviors.Count - 1; effectIteration >= 0; effectIteration--)
+            for (int effectIteration = EffectBehaviors.Count - 1; effectIteration >= 0; effectIteration--)
             {
-                IEffectBehavior effectBehavior = _effectBehaviors[effectIteration];
+                IEffectBehavior effectBehavior = EffectBehaviors[effectIteration];
 
                 effectBehavior.Tick(Time.deltaTime);
 
                 if (effectBehavior.OutOfTime)
                 {
                     effectBehavior.End();
-                    _effectBehaviors.RemoveAt(effectIteration);
+                    EffectBehaviors.RemoveAt(effectIteration);
                 }
             }
 
@@ -89,17 +89,17 @@ namespace Faraway.TestGame
 
         public void AddEffect(IEffectBehavior effectBehavior)
         {
-            for (int effectIteration = _effectBehaviors.Count - 1; effectIteration >= 0; effectIteration--)
+            for (int effectIteration = EffectBehaviors.Count - 1; effectIteration >= 0; effectIteration--)
             {
-                IEffectBehavior existingEffectBehavior = _effectBehaviors[effectIteration];
+                IEffectBehavior existingEffectBehavior = EffectBehaviors[effectIteration];
                 if (existingEffectBehavior.StackingIdentifier == effectBehavior.StackingIdentifier)
                 {
                     existingEffectBehavior.End();
-                    _effectBehaviors.RemoveAt(effectIteration);
+                    EffectBehaviors.RemoveAt(effectIteration);
                 }    
             }
 
-            _effectBehaviors.Add(effectBehavior);
+            EffectBehaviors.Add(effectBehavior);
         }
     }
 }

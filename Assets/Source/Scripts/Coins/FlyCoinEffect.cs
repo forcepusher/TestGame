@@ -26,7 +26,10 @@ namespace Faraway.TestGame
 
         public int StackingIdentifier { get; } = 2;
 
+        public Color BuffColor => Color.yellow;
+
         public bool OutOfTime => _elapsedTime >= _duration;
+        public float TimeRemaining => 1f - _elapsedTime / _duration;
 
         public void Tick(float deltaTime)
         {
