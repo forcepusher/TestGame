@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using Lean.Touch;
 
 namespace Faraway.TestGame
 {
@@ -21,6 +22,7 @@ namespace Faraway.TestGame
         public CrossPlatformInput()
         {
             Input.simulateMouseWithTouches = false;
+            LeanTouch.OnFingerSwipe += OnFingerSwipe;
             TickLoop();
         }
 
@@ -34,6 +36,11 @@ namespace Faraway.TestGame
         private bool _jumpTouch;
 
         private double _touchStartTime;
+
+        private void OnFingerSwipe(LeanFinger finger)
+        {
+            //finger.dire
+        }
 
         private async void TickLoop()
         {
@@ -63,6 +70,7 @@ namespace Faraway.TestGame
 
         public void Dispose()
         {
+            LeanTouch.OnFingerSwipe -= OnFingerSwipe;
             _disposed = true;
         }
     }
