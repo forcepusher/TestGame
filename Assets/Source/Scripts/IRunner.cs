@@ -6,11 +6,13 @@ namespace Faraway.TestGame
     /// Interface for implementing pickup effects.<br/>
     /// Exposes required properties and methods for effects.
     /// </summary>
-    public interface IRunner : IEffectTarget
+    public interface IRunner
     {
         Vector3 Position { get; }
-        Vector3 Velocity { get; set; }
         void Move(Vector3 motion);
         bool IsDead { get; set; }
+        bool IsGrounded { get; }
+        void ChangeBehavior(IBehavior behavior);
+        IInputSource InputSource { get; }
     }
 }
