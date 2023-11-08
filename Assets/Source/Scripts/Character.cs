@@ -16,18 +16,18 @@ namespace Faraway.TestGame
 
         private CharacterController _characterController;
         private IBehavior _characterBehavior;
+        public IInputSource _inputSource;
 
         // IRunner implementation
         public Vector3 Velocity { get; set; }
         public Vector3 Position => transform.position;
         public bool IsDead { get; set; } = false;
         public bool IsGrounded => _characterController.isGrounded;
-        public IInputSource InputSource { get; private set; }
-
+        
         [Inject]
         public void Inject(IInputSource inputSource)
         {
-            InputSource = inputSource;
+            _inputSource = inputSource;
         }
 
         private void Awake()
