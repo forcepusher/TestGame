@@ -10,7 +10,7 @@ namespace Faraway.TestGame
     /// <remarks>
     /// Supports creating additional coins without modifying the source code.
     /// </remarks>
-    public class LevelGenerator : MonoBehaviour
+    public class PickupAndObstacleGenerator : MonoBehaviour
     {
         private const float GenerationAheadDistance = 100f;
 

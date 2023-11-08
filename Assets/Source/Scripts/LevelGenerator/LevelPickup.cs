@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Faraway.TestGame
 {
     /// <summary>
-    /// Structure used by <see cref="LevelGenerator"/> to set coin spawn chances.
+    /// Structure used by <see cref="PickupAndObstacleGenerator"/> to set coin spawn chances.
     /// </summary>
     [Serializable]
     public struct LevelPickup
