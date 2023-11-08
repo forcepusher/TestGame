@@ -43,7 +43,9 @@ namespace Faraway.TestGame
 
         public void ChangeBehavior(IBehavior behavior)
         {
+            _characterBehavior.End();
             _characterBehavior = behavior;
+            _characterBehavior.Start();
         }
     }
 }
