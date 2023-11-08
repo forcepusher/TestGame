@@ -2,9 +2,6 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
-    /// <summary>
-    /// Coin pickup. Creates <see cref="FlyCoinEffect"/> and adds it to Effects.
-    /// </summary>
     public class FlyCoin : MonoBehaviour
     {
         [SerializeField]

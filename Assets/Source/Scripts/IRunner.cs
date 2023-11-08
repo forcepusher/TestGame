@@ -8,9 +8,10 @@ namespace Faraway.TestGame
     /// </summary>
     public interface IRunner
     {
-        Vector3 Position { get; }
+        //Vector3 Position { get; }
+        //bool IsDead { get; set; }
+
         void Move(Vector3 motion);
-        bool IsDead { get; set; }
         bool IsGrounded { get; }
         void ChangeBehavior(IBehavior behavior);
         IInputSource InputSource { get; }
