@@ -8,8 +8,9 @@ namespace Faraway.TestGame
     /// </remarks>
     public interface IEffectBehavior
     {
+        int Identifier { get; }
         void Tick(float deltaTime);
-
-        bool HasEnded { get; }
+        void End();
+        bool OutOfTime { get; }
     }
 }

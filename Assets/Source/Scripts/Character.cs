@@ -54,14 +54,17 @@ namespace Faraway.TestGame
                 return;
 
             // Support for stacking coin behaviors
-            for (int effectIterator = _effectBehaviors.Count - 1; effectIterator >= 0; effectIterator--)
+            for (int effectIteration = _effectBehaviors.Count - 1; effectIteration >= 0; effectIteration--)
             {
-                IEffectBehavior effectBehavior = _effectBehaviors[effectIterator];
+                IEffectBehavior effectBehavior = _effectBehaviors[effectIteration];
 
                 effectBehavior.Tick(Time.deltaTime);
 
-                if (effectBehavior.HasEnded)
-                    _effectBehaviors.RemoveAt(effectIterator);
+                if (effectBehavior.OutOfTime)
+                {
+                    effectBehavior.End();
+                    _effectBehaviors.RemoveAt(effectIteration);
+                }
             }
 
             // Gravity
@@ -88,6 +91,16 @@ namespace Faraway.TestGame
 
         public void AddEffect(IEffectBehavior effectBehavior)
         {
+            for (int effectIteration = _effectBehaviors.Count - 1; effectIteration >= 0; effectIteration--)
+            {
+                IEffectBehavior existingEffectBehavior = _effectBehaviors[effectIteration];
+                if (existingEffectBehavior.Identifier == effectBehavior.Identifier)
+                {
+                    existingEffectBehavior.End();
+                    _effectBehaviors.RemoveAt(effectIteration);
+                }    
+            }
+
             _effectBehaviors.Add(effectBehavior);
         }
     }

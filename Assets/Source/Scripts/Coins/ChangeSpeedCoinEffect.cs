@@ -23,22 +23,23 @@ namespace Faraway.TestGame
             _speedAdjustment = speedAdjustment;
         }
 
-        public bool HasEnded => _elapsedTime >= _duration;
+        public int Identifier { get; } = 1;
+
+        public bool OutOfTime => _elapsedTime >= _duration;
 
         public void Tick(float deltaTime)
         {
-            bool wasActive = !HasEnded;
             bool started = _elapsedTime == 0;
 
             _elapsedTime += deltaTime;
 
             if (started)
-            {
                 _runner.Velocity = new Vector3(_runner.Velocity.x, _runner.Velocity.y, _runner.Velocity.z + _speedAdjustment);
-            }
+        }
 
-            if (wasActive && HasEnded)
-                _runner.Velocity = new Vector3(_runner.Velocity.x, _runner.Velocity.y, _runner.Velocity.z - _speedAdjustment);
+        public void End()
+        {
+            _runner.Velocity = new Vector3(_runner.Velocity.x, _runner.Velocity.y, _runner.Velocity.z - _speedAdjustment);
         }
     }
 }

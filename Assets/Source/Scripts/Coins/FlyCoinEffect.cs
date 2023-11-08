@@ -24,7 +24,9 @@ namespace Faraway.TestGame
             _duration = duration;
         }
 
-        public bool HasEnded => _elapsedTime >= _duration;
+        public int Identifier { get; } = 2;
+
+        public bool OutOfTime => _elapsedTime >= _duration;
 
         public void Tick(float deltaTime)
         {
@@ -38,5 +40,7 @@ namespace Faraway.TestGame
                 _runner.Move(new Vector3(0f, heightAdjustmentThisFrame, 0f));
             }
         }
+
+        public void End() { }
     }
 }
