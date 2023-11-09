@@ -988,16 +988,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5edac7df524914eaea3c38a71560d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpObstacle: {fileID: 8612321562491591174, guid: dc8b144835324a946afc79173ebfac9a, type: 3}
-  _levelPickups:
+  _levelObjects:
+  - Prefab: {fileID: 0}
+    SpawnChance: 10
+    MinimumInRow: 1
+    MaximumInRow: 5
   - Prefab: {fileID: 2759234680172400806, guid: 6bc268987fa2a204d8d5c101ac1f15be, type: 3}
-    SpawnChance: 70
+    SpawnChance: 50
+    MinimumInRow: 3
+    MaximumInRow: 10
   - Prefab: {fileID: 6394278511288233640, guid: 1ebce3f80d47a674892b54f0c7e9ba22, type: 3}
-    SpawnChance: 12
+    SpawnChance: 20
+    MinimumInRow: 1
+    MaximumInRow: 1
   - Prefab: {fileID: 8420985477245859480, guid: 870d97a29f1779d46a2c6e58c42f3adf, type: 3}
-    SpawnChance: 12
+    SpawnChance: 20
+    MinimumInRow: 1
+    MaximumInRow: 1
   - Prefab: {fileID: 8055716550757744055, guid: dae30785d119ffb4cb36ad1be38d6073, type: 3}
-    SpawnChance: 6
+    SpawnChance: 5
+    MinimumInRow: 1
+    MaximumInRow: 1
 --- !u!1 &1150667812
 GameObject:
   m_ObjectHideFlags: 0

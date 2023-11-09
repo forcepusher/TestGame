@@ -7,9 +7,11 @@ namespace Faraway.TestGame
     /// Structure used by <see cref="PickupAndObstacleGenerator"/> to set coin spawn chances.
     /// </summary>
     [Serializable]
-    public struct LevelPickup
+    public class LevelObject
     {
         public GameObject Prefab;
         public float SpawnChance;
+        public int MinimumInRow = 1;
+        public int MaximumInRow = 1;
     }
 }
