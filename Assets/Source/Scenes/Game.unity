@@ -189,6 +189,7 @@ MonoBehaviour:
   _vegetationPieces:
   - {fileID: 1147539803375467073, guid: d59ca8ea20b3b604986f18f85da444a1, type: 3}
   - {fileID: 8563703609255984755, guid: 1d7dd6e0461d498438d1e2cc02ebd5c9, type: 3}
+  - {fileID: 2379433633768711098, guid: 5eb2e6ead6e04d7408e2997f06dc9f41, type: 3}
 --- !u!1 &340544691
 GameObject:
   m_ObjectHideFlags: 0

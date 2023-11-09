@@ -8,8 +8,8 @@ namespace Faraway.TestGame
     {
         private const float GenerationAheadDistance = 200f;
         private const float HorizontalOffset = 5.3f;
-        private const float SpacingMin = 1f;
-        private const float SpacingMax = 10f;
+        private const float SpacingMin = 3f;
+        private const float SpacingMax = 20f;
 
         [SerializeField]
         private List<GameObject> _vegetationPieces;
