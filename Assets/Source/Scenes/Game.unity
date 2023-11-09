@@ -991,8 +991,8 @@ MonoBehaviour:
   _levelObjects:
   - Prefab: {fileID: 0}
     SpawnChance: 30
-    MinimumInRow: 3
-    MaximumInRow: 8
+    MinimumInRow: 2
+    MaximumInRow: 6
   - Prefab: {fileID: 2759234680172400806, guid: 6bc268987fa2a204d8d5c101ac1f15be, type: 3}
     SpawnChance: 50
     MinimumInRow: 1

@@ -23,6 +23,8 @@ namespace Faraway.TestGame
         private List<LevelObject> _levelObjects = new();
 
         private Random _random = new();
+        private LevelObject _lastSelectedLevelObject;
+
         private int _totalPickupRoll;
         private float _lastObjectZPosition;
         private int _lastLane;
@@ -77,19 +79,26 @@ namespace Faraway.TestGame
         private LevelObject SelectRandomObject()
         {
             LevelObject selectedObject = null;
-            float pickupRoll = _random.Next(0, _totalPickupRoll);
-            float minimumRollToSelect = 0;
 
-            foreach (LevelObject levelObject in _levelObjects)
+            do
             {
-                if (pickupRoll <= levelObject.SpawnChance + minimumRollToSelect)
-                {
-                    selectedObject = levelObject;
-                    break;
-                }
+                float pickupRoll = _random.Next(0, _totalPickupRoll);
+                float minimumRollToSelect = 0;
 
-                minimumRollToSelect += levelObject.SpawnChance;
+                foreach (LevelObject levelObject in _levelObjects)
+                {
+                    if (pickupRoll <= levelObject.SpawnChance + minimumRollToSelect)
+                    {
+                        selectedObject = levelObject;
+                        break;
+                    }
+
+                    minimumRollToSelect += levelObject.SpawnChance;
+                }
             }
+            while (_lastSelectedLevelObject == selectedObject);
+
+            _lastSelectedLevelObject = selectedObject;
 
             return selectedObject;
         }
