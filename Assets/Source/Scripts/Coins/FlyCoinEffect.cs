@@ -12,7 +12,7 @@ namespace Faraway.TestGame
     {
         private const float FlyHeight = 2f;
         private const float FlyTweenSpeed = 6f;
-        private const float MagnetRadius = 10f;
+        private const float MagnetRadius = 7f;
         private const float MagnetSpeed = 20f;
 
         private readonly IRunner _runner;
