@@ -1022,6 +1022,18 @@ MonoBehaviour:
     SpawnChance: 5
     MinimumInRow: 1
     MaximumInRow: 1
+  - Prefab: {fileID: 6601244612746753325, guid: 00024e2c56cc7d241bd8bc4ca1e2651f, type: 3}
+    SpawnChance: 5
+    MinimumInRow: 1
+    MaximumInRow: 1
+  - Prefab: {fileID: 5113801470950756009, guid: 30ca56f62257ee9479e3c906703cebde, type: 3}
+    SpawnChance: 5
+    MinimumInRow: 1
+    MaximumInRow: 1
+  - Prefab: {fileID: 2547318848226421461, guid: 1596f3863c570e1409d4d57a5857ccb0, type: 3}
+    SpawnChance: 5
+    MinimumInRow: 1
+    MaximumInRow: 1
 --- !u!1 &1150667812
 GameObject:
   m_ObjectHideFlags: 0
