@@ -46,7 +46,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.15
   m_TransitionOffset: 0
   m_ExitTime: 1
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -62,6 +62,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: RunSpeed
     m_EventTreshold: 17
+  - m_ConditionMode: 2
+    m_ConditionEvent: Jump
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4755618380342315796}
   m_Solo: 0
@@ -211,6 +214,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: RunSpeed
     m_EventTreshold: 17
+  - m_ConditionMode: 2
+    m_ConditionEvent: Jump
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4231837834313855477}
   m_Solo: 0
@@ -236,6 +242,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: RunSpeed
     m_EventTreshold: 12
+  - m_ConditionMode: 2
+    m_ConditionEvent: Jump
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1162318387727626612}
   m_Solo: 0

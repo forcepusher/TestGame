@@ -70,7 +70,10 @@ namespace Faraway.TestGame
             // Gravity
             Vector3 newVelocity = Velocity;
             if (_characterController.isGrounded)
+            {
                 newVelocity.y = 0f;
+                _animator.SetBool("Jump", false);
+            }
 
             newVelocity.y += _gravity * Time.deltaTime;
 
@@ -89,8 +92,8 @@ namespace Faraway.TestGame
 
             if (_inputSource.Jump && _characterController.isGrounded)
             {
-                _animator.SetTrigger("Jump");
                 newVelocity.y = _jumpVelocity;
+                _animator.SetBool("Jump", true);
             }
 
             Velocity = newVelocity;
