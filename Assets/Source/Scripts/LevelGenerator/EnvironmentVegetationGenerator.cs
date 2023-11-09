@@ -7,10 +7,12 @@ namespace Faraway.TestGame
     public class EnvironmentVegetationGenerator : MonoBehaviour
     {
         private const float GenerationAheadDistance = 200f;
-        private const float HorizontalOffset = 5f;
+        private const float HorizontalOffset = 5.3f;
+        private const float SpacingMin = 1f;
+        private const float SpacingMax = 10f;
 
         [SerializeField]
-        private List<VegetationPiece> _vegetationPieces;
+        private List<GameObject> _vegetationPieces;
 
         private float _lastPieceZPosition;
         private int _lastOffsetMultiplier = 1;
@@ -29,10 +31,10 @@ namespace Faraway.TestGame
 
             while (_lastPieceZPosition < generationDistance)
             {
-                VegetationPiece piece = _vegetationPieces[Random.Range(0, _vegetationPieces.Count)];
-                float spacing = Random.Range(piece.SpacingMin, piece.SpacingMax);
-                Instantiate(piece.Prefab, new Vector3(HorizontalOffset * _lastOffsetMultiplier, 0f, _lastPieceZPosition + spacing), Quaternion.Euler(0f, Random.Range(0, 360f), 0f));
-                _lastPieceZPosition += _lastPieceZPosition + spacing * 2f;
+                GameObject piece = _vegetationPieces[Random.Range(0, _vegetationPieces.Count)];
+                float spacing = Random.Range(SpacingMin, SpacingMax);
+                Instantiate(piece, new Vector3(HorizontalOffset * _lastOffsetMultiplier, 0f, _lastPieceZPosition + spacing), Quaternion.Euler(0f, Random.Range(0, 360f), 0f));
+                _lastPieceZPosition += spacing * 2;
                 _lastOffsetMultiplier *= -1;
             }
         }
