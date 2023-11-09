@@ -10,7 +10,7 @@ namespace BananaParty.TouchInput
         private readonly float _deltaThreshold;
         private readonly float _timeThreshold;
 
-        public SwipeGesture(Vector2 direction, float angleLimit = 45, float deltaThreshold = 0.2f, float timeTreshold = 0.3f)
+        public SwipeGesture(Vector2 direction, float angleLimit = 45, float deltaThreshold = 0.05f, float timeTreshold = 0.3f)
         {
             _direction = direction;
             _angleLimit = angleLimit;
