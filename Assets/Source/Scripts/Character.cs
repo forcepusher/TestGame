@@ -18,9 +18,9 @@ namespace Faraway.TestGame
         [SerializeField]
         private float _gravity = -40f;
         [SerializeField]
-        private float _movementOffset = 2f;
+        private float _movementOffset = 2.2f;
         [SerializeField]
-        private float _horizontalSpeed = 4f;
+        private float _horizontalSpeed = 20f;
 
         private CharacterController _characterController;
         private Animator _animator;
@@ -74,7 +74,18 @@ namespace Faraway.TestGame
             newVelocity.y += _gravity * Time.deltaTime;
 
             // Horizontal movement and jump input
-            //var horizontalInput = new Vector3(_inputSource.HorizontalMovementDelta, 0f, 0f);
+            if (_inputSource.MoveLeft && _movementLane > -1)
+            {
+                StartCoroutine(HorizontalMove(-1));
+                _movementLane -= 1;
+            }
+
+            if (_inputSource.MoveRight && _movementLane < 1)
+            {
+                StartCoroutine(HorizontalMove(1));
+                _movementLane += 1;
+            }
+
             if (_inputSource.Jump && _characterController.isGrounded)
                 newVelocity.y = _jumpVelocity;
 
@@ -115,6 +126,7 @@ namespace Faraway.TestGame
 
                 Move(new Vector3(movement * direction, 0f, 0f));
 
+                remainingOffset -= movement;
                 yield return null;
             }
         }
