@@ -933,15 +933,15 @@ MonoBehaviour:
     MinimumInRow: 1
     MaximumInRow: 1
   - Prefab: {fileID: 6601244612746753325, guid: 00024e2c56cc7d241bd8bc4ca1e2651f, type: 3}
-    SpawnChance: 10
+    SpawnChance: 12
     MinimumInRow: 1
     MaximumInRow: 1
   - Prefab: {fileID: 5113801470950756009, guid: 30ca56f62257ee9479e3c906703cebde, type: 3}
-    SpawnChance: 10
+    SpawnChance: 12
     MinimumInRow: 1
     MaximumInRow: 1
   - Prefab: {fileID: 2547318848226421461, guid: 1596f3863c570e1409d4d57a5857ccb0, type: 3}
-    SpawnChance: 10
+    SpawnChance: 12
     MinimumInRow: 1
     MaximumInRow: 1
 --- !u!1 &1150365246
@@ -1169,7 +1169,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 70}
-  m_SizeDelta: {x: 273.11, y: 207.84052}
+  m_SizeDelta: {x: 221.2, y: 173.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1198346021
 MonoBehaviour:
@@ -1416,7 +1416,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Distance: 0 meters'
+  m_Text: 'Distance: 0m'
 --- !u!222 &1406873016
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1835,7 +1835,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007744827}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}

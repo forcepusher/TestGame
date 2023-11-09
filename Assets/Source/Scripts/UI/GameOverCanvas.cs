@@ -43,7 +43,7 @@ namespace Faraway.TestGame
             Observable.EveryUpdate().First(_ => _runner.IsDead).Subscribe(_ =>
             {
                 _canvas.enabled = true;
-                _distanceText.text = $"Distance: {Mathf.RoundToInt(_runner.Position.z)} meters";
+                _distanceText.text = $"Distance: {Mathf.RoundToInt(_runner.Position.z)}m";
                 _coinsText.text = $"Coins: {_runner.Score}";
             });
         }
