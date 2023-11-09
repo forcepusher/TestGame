@@ -990,12 +990,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpObstacle: {fileID: 8612321562491591174, guid: dc8b144835324a946afc79173ebfac9a, type: 3}
   _levelPickups:
+  - Prefab: {fileID: 2759234680172400806, guid: 6bc268987fa2a204d8d5c101ac1f15be, type: 3}
+    SpawnChance: 70
   - Prefab: {fileID: 6394278511288233640, guid: 1ebce3f80d47a674892b54f0c7e9ba22, type: 3}
-    SpawnChance: 45
+    SpawnChance: 12
   - Prefab: {fileID: 8420985477245859480, guid: 870d97a29f1779d46a2c6e58c42f3adf, type: 3}
-    SpawnChance: 45
+    SpawnChance: 12
   - Prefab: {fileID: 8055716550757744055, guid: dae30785d119ffb4cb36ad1be38d6073, type: 3}
-    SpawnChance: 10
+    SpawnChance: 6
 --- !u!1 &1150667812
 GameObject:
   m_ObjectHideFlags: 0

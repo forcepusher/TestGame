@@ -33,6 +33,7 @@ namespace Faraway.TestGame
         public Vector3 Velocity { get; set; }
         public bool IsDead { get; set; } = false;
         public List<IEffectBehavior> EffectBehaviors { get; } = new();
+        public int Score { get; private set; }
 
         [Inject]
         public void Inject(IInputSource inputSource)
@@ -114,6 +115,11 @@ namespace Faraway.TestGame
             }
 
             EffectBehaviors.Add(effectBehavior);
+        }
+
+        public void IncreaseScore(int amount)
+        {
+            Score += amount;
         }
 
         private IEnumerator HorizontalMove(int direction)

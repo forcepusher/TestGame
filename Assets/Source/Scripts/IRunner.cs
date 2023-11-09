@@ -14,5 +14,7 @@ namespace Faraway.TestGame
         void Move(Vector3 motion);
         bool IsDead { get; set; }
         List<IEffectBehavior> EffectBehaviors { get; }
+        int Score { get; }
+        void IncreaseScore(int amount);
     }
 }
