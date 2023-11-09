@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 340544692}
   - component: {fileID: 340544694}
   - component: {fileID: 340544693}
+  - component: {fileID: 340544695}
   m_Layer: 5
   m_Name: ControlsText
   m_TagString: Untagged
@@ -243,7 +244,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tap/Click to jump
+  m_Text: Swipe left/right/up
 --- !u!222 &340544694
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -252,6 +253,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340544691}
   m_CullTransparentMesh: 1
+--- !u!114 &340544695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340544691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6722f43528db90447bb9560d6beec495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &363567430
 PrefabInstance:
   m_ObjectHideFlags: 0
