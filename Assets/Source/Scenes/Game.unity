@@ -1096,7 +1096,7 @@ MonoBehaviour:
     MinimumInRow: 1
     MaximumInRow: 1
   - Prefab: {fileID: 8420985477245859480, guid: 870d97a29f1779d46a2c6e58c42f3adf, type: 3}
-    SpawnChance: 6
+    SpawnChance: 5
     MinimumInRow: 1
     MaximumInRow: 1
   - Prefab: {fileID: 8055716550757744055, guid: dae30785d119ffb4cb36ad1be38d6073, type: 3}
