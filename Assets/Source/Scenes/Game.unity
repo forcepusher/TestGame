@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10
-  _jumpVelocity: 20
+  _jumpVelocity: 15
   _gravity: -40
   _movementOffset: 2.2
   _horizontalSpeed: 20

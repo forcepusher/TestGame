@@ -14,7 +14,7 @@ namespace Faraway.TestGame
         [SerializeField]
         private float _speed = 10f;
         [SerializeField]
-        private float _jumpVelocity = 20f;
+        private float _jumpVelocity = 15f;
         [SerializeField]
         private float _gravity = -40f;
         [SerializeField]

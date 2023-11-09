@@ -10,8 +10,8 @@ namespace Faraway.TestGame
     /// </remarks>
     public class FlyCoinEffect : IEffectBehavior
     {
-        private const float FlyHeight = 3f;
-        private const float FlyTweenSpeed = 4f;
+        private const float FlyHeight = 2f;
+        private const float FlyTweenSpeed = 6f;
 
         private readonly IRunner _runner;
         private readonly float _duration;
