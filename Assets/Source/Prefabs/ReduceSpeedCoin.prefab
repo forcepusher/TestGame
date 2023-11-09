@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 488489641302823089}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1.25, y: 0.05, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 4965921848566551499}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.055}
+  m_LocalPosition: {x: 0, y: 0.7, z: -0.055}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -193,7 +193,7 @@ Transform:
   m_GameObject: {fileID: 6134456977002772661}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.055}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0.055}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -261,7 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197423099465726787}
   - component: {fileID: 7425958485971612969}
-  - component: {fileID: 7571479316088977488}
+  - component: {fileID: 5693640067786132119}
   m_Layer: 0
   m_Name: ReduceSpeedCoin
   m_TagString: Untagged
@@ -278,7 +278,7 @@ Transform:
   m_GameObject: {fileID: 8420985477245859480}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17, y: 0.73, z: 6.64}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -301,8 +301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 10
   _speedChange: -5
---- !u!135 &7571479316088977488
-SphereCollider:
+--- !u!136 &5693640067786132119
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -319,6 +319,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}

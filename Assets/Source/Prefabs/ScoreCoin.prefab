@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8917461830953404718}
   - component: {fileID: 2658720558695275686}
-  - component: {fileID: 2870318467708177117}
+  - component: {fileID: 8201265716202583098}
   m_Layer: 0
   m_Name: ScoreCoin
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2759234680172400806}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.17, y: 0.73, z: 6.64}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117b420ba64077142a3e1078883585bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &2870318467708177117
-SphereCollider:
+--- !u!136 &8201265716202583098
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -64,9 +64,11 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1 &6214975689721121905
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +96,7 @@ Transform:
   m_GameObject: {fileID: 6214975689721121905}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1.25, y: 0.05, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children: []

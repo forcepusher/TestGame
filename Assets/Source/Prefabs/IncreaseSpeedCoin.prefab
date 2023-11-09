@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5365368686153575667}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 1.25, y: 0.05, z: 1.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 6319256700566790360}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.055}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0.055}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -177,7 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4753173989151955340}
   - component: {fileID: 8888378209164486606}
-  - component: {fileID: 1027973834302483388}
+  - component: {fileID: 7349936053378040755}
   m_Layer: 0
   m_Name: IncreaseSpeedCoin
   m_TagString: Untagged
@@ -217,8 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 10
   _speedChange: 5
---- !u!135 &1027973834302483388
-SphereCollider:
+--- !u!136 &7349936053378040755
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -235,9 +235,11 @@ SphereCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1 &7174910250045827639
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,7 +266,7 @@ Transform:
   m_GameObject: {fileID: 7174910250045827639}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.055}
+  m_LocalPosition: {x: 0, y: 0.7, z: -0.055}
   m_LocalScale: {x: 0.46967, y: 0.46967, z: 0.46967}
   m_ConstrainProportionsScale: 0
   m_Children: []
