@@ -201,8 +201,10 @@ GameObject:
   - component: {fileID: 340544692}
   - component: {fileID: 340544694}
   - component: {fileID: 340544693}
+  - component: {fileID: 340544698}
   - component: {fileID: 340544695}
   - component: {fileID: 340544696}
+  - component: {fileID: 340544697}
   m_Layer: 5
   m_Name: ControlsText
   m_TagString: Untagged
@@ -298,6 +300,32 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!225 &340544697
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340544691}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &340544698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340544691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bdfd024de351b645a890ac0232b4b88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fadeDuration: 0.5
+  _delayDuration: 3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

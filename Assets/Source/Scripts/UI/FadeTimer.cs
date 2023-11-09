@@ -1,18 +1,34 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class FadeTimer : MonoBehaviour
+namespace Faraway.TestGame
 {
-    // Start is called before the first frame update
-    void Start()
+    public class FadeTimer : MonoBehaviour
     {
-        
-    }
+        [SerializeField]
+        private float _fadeDuration = 0.5f;
+        [SerializeField]
+        private float _delayDuration = 3f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private CanvasGroup _canvasGroup;
+
+        private void Awake()
+        {
+            _canvasGroup = GetComponent<CanvasGroup>();
+        }
+
+        private IEnumerator Start()
+        {
+            yield return new WaitForSeconds(_delayDuration);
+
+            float remainingFadeDuration = _fadeDuration;
+
+            while (remainingFadeDuration > 0)
+            {
+                remainingFadeDuration -= Time.deltaTime;
+                _canvasGroup.alpha = remainingFadeDuration / _fadeDuration;
+                yield return null;
+            }
+        }
     }
 }
