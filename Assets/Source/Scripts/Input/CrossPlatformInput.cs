@@ -16,7 +16,6 @@ namespace Faraway.TestGame
     {
         private const float MouseMovementSensitivity = 150f;
         //private const float TouchMovementSensitivity = 10f;
-        //private const float TapTimeThreshold = 0.15f;
 
         private bool _disposed = false;
 
@@ -35,10 +34,11 @@ namespace Faraway.TestGame
         private bool _jumpKeyboard => Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0);
         private bool _jumpTouch;
 
-        //private double _touchStartTime;
+        private readonly Touchscreen _touchscreen = new();
 
-        private Touchscreen _touchscreen = new();
-        private List<Finger> _fingers;
+        private readonly SwipeGesture _swipeUp = new(Vector2.up);
+        private readonly SwipeGesture _swipeLeft = new(Vector2.left);
+        private readonly SwipeGesture _swipeRight = new(Vector2.right);
 
         private async void TickLoop()
         {
@@ -49,39 +49,21 @@ namespace Faraway.TestGame
                 if (_disposed)
                     return;
 
-                _touchscreen.PollChanges(Time.unscaledDeltaTime);
+                _touchscreen.PollInput(Time.unscaledDeltaTime);
 
                 while (_touchscreen.HasNewTouches)
-                    _fingers.Add(_touchscreen.GetNextNewTouch());
-
-                foreach (Finger finger in _fingers)
                 {
-                    if (finger.Phase == FingerPhase.Lifted)
-                    {
-                        if (finger.ElapsedTime <= SwipeTimeThreshold)
-                        {
-                            if ((finger.NormalizedPosition - finger.NormalizedStartPosition).magnitude >= SwipePositionDeltaThreshold)
-                            {
-                                
-                            }
-                        }
-                    }
+                    Finger finger = _touchscreen.GetNextNewTouch();
+                    _swipeUp.AddFinger(finger);
+                    _swipeLeft.AddFinger(finger);
+                    _swipeRight.AddFinger(finger);
                 }
 
-                //_jumpTouch = false;
-                //_horizontalMovementDeltaTouch = 0f;
+                _swipeUp.PollInput();
+                _swipeLeft.PollInput();
+                _swipeRight.PollInput();
 
-                //if (Input.touchCount > 0)
-                //{
-                //    _horizontalMovementDeltaTouch = Input.touches[0].deltaPosition.x / Screen.width * TouchMovementSensitivity;
-
-                //    if (Input.GetTouch(0).phase == TouchPhase.Began)
-                //        _touchStartTime = Time.realtimeSinceStartupAsDouble;
-
-                //    if (Input.GetTouch(0).phase == TouchPhase.Ended)
-                //        if (Time.realtimeSinceStartupAsDouble - _touchStartTime <= TapTimeThreshold)
-                //            _jumpTouch = true;
-                //}
+                _jumpTouch = _swipeUp.IsActuated;
             }
         }
 

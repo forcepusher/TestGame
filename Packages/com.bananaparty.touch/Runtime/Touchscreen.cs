@@ -10,7 +10,7 @@ namespace BananaParty.TouchInput
 
         public bool HasNewTouches => _newFingers.Count > 0;
 
-        public void PollChanges(float deltaTime)
+        public void PollInput(float deltaTime)
         {
             foreach (Touch touch in Input.touches)
             {
