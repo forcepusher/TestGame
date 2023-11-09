@@ -33,7 +33,7 @@ namespace Faraway.TestGame
             {
                 GameObject piece = _vegetationPieces[Random.Range(0, _vegetationPieces.Count)];
                 float spacing = Random.Range(SpacingMin, SpacingMax);
-                Instantiate(piece, new Vector3(HorizontalOffset * _lastOffsetMultiplier, 0f, _lastPieceZPosition + spacing), Quaternion.Euler(0f, Random.Range(0, 360f), 0f));
+                Instantiate(piece, new Vector3(HorizontalOffset * _lastOffsetMultiplier, 0f, _lastPieceZPosition + spacing), Quaternion.identity);
                 _lastPieceZPosition += spacing * 2;
                 _lastOffsetMultiplier *= -1;
             }
