@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.bananaparty.touchinput": {
-      "version": "file:com.bananaparty.touch",
+      "version": "file:com.bananaparty.touchinput",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
