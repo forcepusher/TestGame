@@ -14,9 +14,6 @@ namespace Faraway.TestGame
     /// </remarks>
     public class CrossPlatformInput : IInputSource, IDisposable
     {
-        private const float MouseMovementSensitivity = 150f;
-        //private const float TouchMovementSensitivity = 10f;
-
         private bool _disposed = false;
 
         public CrossPlatformInput()
@@ -25,13 +22,17 @@ namespace Faraway.TestGame
             TickLoop();
         }
 
-        public float HorizontalMovementDelta => _horizontalMovementDeltaTouch + _horizontalMovementDeltaMouse;
         public bool Jump => _jumpKeyboard || _jumpTouch;
+        public bool MoveLeft => _moveLeftKeyboard || _moveLeftTouch;
+        public bool MoveRight => _moveRightKeyboard || _moveRightTouch;
 
-        private float _horizontalMovementDeltaMouse => Input.GetAxisRaw("Mouse X") / Screen.width * MouseMovementSensitivity;
-        private float _horizontalMovementDeltaTouch;
+        private bool _moveLeftKeyboard => Input.GetKeyDown(KeyCode.A);
+        private bool _moveLeftTouch;
 
-        private bool _jumpKeyboard => Input.GetButtonDown("Jump") || Input.GetMouseButtonDown(0);
+        private bool _moveRightKeyboard => Input.GetKeyDown(KeyCode.D);
+        private bool _moveRightTouch;
+
+        private bool _jumpKeyboard => Input.GetButtonDown("Jump");
         private bool _jumpTouch;
 
         private readonly Touchscreen _touchscreen = new();
@@ -64,6 +65,8 @@ namespace Faraway.TestGame
                 _swipeRight.PollInput();
 
                 _jumpTouch = _swipeUp.IsActuated;
+                _moveLeftTouch = _swipeLeft.IsActuated;
+                _moveRightTouch = _swipeRight.IsActuated;
             }
         }
 

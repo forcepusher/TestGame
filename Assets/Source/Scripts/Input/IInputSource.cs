@@ -5,8 +5,8 @@ namespace Faraway.TestGame
     /// </summary>
     public interface IInputSource
     {
-        float HorizontalMovementDelta { get; }
-
+        bool MoveLeft { get; }
+        bool MoveRight { get; }
         bool Jump { get; }
     }
 }
