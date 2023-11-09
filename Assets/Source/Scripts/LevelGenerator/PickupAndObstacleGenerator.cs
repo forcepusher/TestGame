@@ -26,7 +26,7 @@ namespace Faraway.TestGame
         private LevelObject _lastSelectedLevelObject;
 
         private int _totalPickupRoll;
-        private float _lastObjectZPosition;
+        private float _lastObjectZPosition = 20f;
         private int _lastLane;
 
         [Inject]
