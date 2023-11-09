@@ -23,6 +23,7 @@ namespace BananaParty.TouchInput
 
         public void Move(Vector2 position)
         {
+            Debug.Log(position);
             DeltaPosition = position - Position;
             Position = position;
         }

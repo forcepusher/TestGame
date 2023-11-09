@@ -16,13 +16,13 @@ namespace BananaParty.TouchInput
             {
                 if (!_touchIdToFinger.TryGetValue(touch.fingerId, out Finger finger))
                 {
-                    finger = new Finger(touch.rawPosition);
+                    finger = new Finger(touch.position);
                     _touchIdToFinger[touch.fingerId] = finger;
                     _newFingers.Enqueue(finger);
                 }
                 else
                 {
-                    finger.Move(touch.rawPosition);
+                    finger.Move(touch.position);
                     finger.IncrementTime(deltaTime);
 
                     if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
