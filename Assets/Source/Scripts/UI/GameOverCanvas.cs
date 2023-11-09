@@ -18,6 +18,8 @@ namespace Faraway.TestGame
         private Button _restartButton;
         [SerializeField]
         private Text _distanceText;
+        [SerializeField]
+        private Text _coinsText;
 
         private Canvas _canvas;
         private IRunner _runner;
@@ -42,6 +44,7 @@ namespace Faraway.TestGame
             {
                 _canvas.enabled = true;
                 _distanceText.text = $"Distance: {Mathf.RoundToInt(_runner.Position.z)} meters";
+                _coinsText.text = $"Coins: {_runner.Score}";
             });
         }
     }
