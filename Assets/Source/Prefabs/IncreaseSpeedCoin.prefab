@@ -177,7 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4753173989151955340}
   - component: {fileID: 8888378209164486606}
-  - component: {fileID: 7349936053378040755}
+  - component: {fileID: 7163614345347680386}
   m_Layer: 0
   m_Name: IncreaseSpeedCoin
   m_TagString: Untagged
@@ -217,8 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 10
   _speedChange: 5
---- !u!136 &7349936053378040755
-CapsuleCollider:
+--- !u!135 &7163614345347680386
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -235,11 +235,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Radius: 1
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &7174910250045827639
 GameObject:
   m_ObjectHideFlags: 0

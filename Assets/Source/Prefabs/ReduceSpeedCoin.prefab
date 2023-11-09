@@ -261,7 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197423099465726787}
   - component: {fileID: 7425958485971612969}
-  - component: {fileID: 5693640067786132119}
+  - component: {fileID: 1344582464725701625}
   m_Layer: 0
   m_Name: ReduceSpeedCoin
   m_TagString: Untagged
@@ -301,8 +301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 10
   _speedChange: -5
---- !u!136 &5693640067786132119
-CapsuleCollider:
+--- !u!135 &1344582464725701625
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -319,8 +319,6 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Radius: 1
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}

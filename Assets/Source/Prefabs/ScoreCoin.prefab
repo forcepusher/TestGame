@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8917461830953404718}
   - component: {fileID: 2658720558695275686}
-  - component: {fileID: 8201265716202583098}
+  - component: {fileID: 7103950408383057183}
   m_Layer: 0
   m_Name: ScoreCoin
   m_TagString: Untagged
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117b420ba64077142a3e1078883585bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &8201265716202583098
-CapsuleCollider:
+--- !u!135 &7103950408383057183
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -64,11 +64,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Radius: 1
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &6214975689721121905
 GameObject:
   m_ObjectHideFlags: 0
