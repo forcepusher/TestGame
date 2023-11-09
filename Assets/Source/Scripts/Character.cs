@@ -99,6 +99,7 @@ namespace Faraway.TestGame
             Move(Velocity * Time.deltaTime);
 
             _animator.SetFloat("RunSpeed", Velocity.z);
+            // This is a crutch. Animator logic should be separated.
             _animator.SetBool("Flying", EffectBehaviors.Exists((effect) => effect.StackingIdentifier == 2));
         }
 

@@ -12,6 +12,8 @@ namespace Faraway.TestGame
     {
         private const float FlyHeight = 2f;
         private const float FlyTweenSpeed = 6f;
+        private const float MagnetRadius = 10f;
+        private const float MagnetSpeed = 20f;
 
         private readonly IRunner _runner;
         private readonly float _duration;
@@ -42,6 +44,15 @@ namespace Faraway.TestGame
                 float heightAdjustmentThisFrame = Mathf.Min(FlyTweenSpeed * Time.deltaTime, characterToFlyHeightDifference);
                 _runner.Move(new Vector3(0f, heightAdjustmentThisFrame, 0f));
             }
+
+            Collider[] overlapColliders = Physics.OverlapSphere(_runner.Position, MagnetRadius);
+            foreach (Collider overlapCollider in overlapColliders)
+            {
+                ScoreCoin scoreCoin = overlapCollider.GetComponent<ScoreCoin>();
+                if (scoreCoin != null)
+                    scoreCoin.transform.position = Vector3.MoveTowards(scoreCoin.transform.position, _runner.Position, MagnetSpeed * Time.deltaTime);
+            }
+
         }
 
         public void End() { }
