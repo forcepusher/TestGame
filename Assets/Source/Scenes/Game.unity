@@ -1092,27 +1092,27 @@ MonoBehaviour:
     MinimumInRow: 1
     MaximumInRow: 6
   - Prefab: {fileID: 6394278511288233640, guid: 1ebce3f80d47a674892b54f0c7e9ba22, type: 3}
-    SpawnChance: 20
+    SpawnChance: 5
     MinimumInRow: 1
     MaximumInRow: 1
   - Prefab: {fileID: 8420985477245859480, guid: 870d97a29f1779d46a2c6e58c42f3adf, type: 3}
-    SpawnChance: 20
+    SpawnChance: 5
     MinimumInRow: 1
     MaximumInRow: 1
   - Prefab: {fileID: 8055716550757744055, guid: dae30785d119ffb4cb36ad1be38d6073, type: 3}
-    SpawnChance: 5
+    SpawnChance: 1
     MinimumInRow: 1
     MaximumInRow: 1
   - Prefab: {fileID: 6601244612746753325, guid: 00024e2c56cc7d241bd8bc4ca1e2651f, type: 3}
-    SpawnChance: 5
+    SpawnChance: 10
     MinimumInRow: 1
     MaximumInRow: 1
   - Prefab: {fileID: 5113801470950756009, guid: 30ca56f62257ee9479e3c906703cebde, type: 3}
-    SpawnChance: 5
+    SpawnChance: 10
     MinimumInRow: 1
     MaximumInRow: 1
   - Prefab: {fileID: 2547318848226421461, guid: 1596f3863c570e1409d4d57a5857ccb0, type: 3}
-    SpawnChance: 5
+    SpawnChance: 10
     MinimumInRow: 1
     MaximumInRow: 1
 --- !u!1 &1150365246

@@ -88,7 +88,10 @@ namespace Faraway.TestGame
             }
 
             if (_inputSource.Jump && _characterController.isGrounded)
+            {
+                _animator.SetTrigger("Jump");
                 newVelocity.y = _jumpVelocity;
+            }
 
             Velocity = newVelocity;
 
