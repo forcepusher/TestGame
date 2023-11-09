@@ -37,18 +37,13 @@ namespace BananaParty.TouchInput
 
                 if (finger.Phase == FingerPhase.Lifted)
                 {
-                    Debug.Log("11111111");
                     if (finger.ElapsedTime <= _timeThreshold)
                     {
-                        Debug.Log("2222222");
                         Vector2 swipeDelta = finger.NormalizedPosition - finger.NormalizedStartPosition;
-                        Debug.Log(swipeDelta + " " + finger.NormalizedPosition + " " + finger.NormalizedStartPosition);
                         if (swipeDelta.magnitude >= _deltaThreshold)
                         {
-                            Debug.Log("33333333");
                             if (Vector2.Angle(_direction, swipeDelta) <= _angleLimit)
                             {
-                                Debug.Log("4444444");
                                 IsActuated = true;
                             }
                         }
