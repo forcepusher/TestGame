@@ -15,8 +15,6 @@ namespace Faraway.TestGame
     public class CrossPlatformInput : IInputSource, IDisposable
     {
         private const float MouseMovementSensitivity = 150f;
-        private const float SwipeTimeThreshold = 0.3f;
-        private const float SwipePositionDeltaThreshold = 0.2f;
         //private const float TouchMovementSensitivity = 10f;
         //private const float TapTimeThreshold = 0.15f;
 
