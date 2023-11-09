@@ -50,6 +50,8 @@ namespace Faraway.TestGame
 
         private void Update()
         {
+            _animator.SetBool("Death", IsDead);
+
             if (IsDead)
                 return;
 
