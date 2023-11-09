@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Reflex.Attributes;
 using UnityEngine;
@@ -17,13 +18,15 @@ namespace Faraway.TestGame
         [SerializeField]
         private float _gravity = -40f;
         [SerializeField]
-        private float _minimumSpeed = 3f;
+        private float _movementOffset = 2f;
         [SerializeField]
-        private float _maximumSpeed = 40f;
+        private float _horizontalSpeed = 4f;
 
         private CharacterController _characterController;
         private Animator _animator;
         private IInputSource _inputSource;
+
+        private int _movementLane = 0;
 
         // IRunner implementation
         public Vector3 Position => transform.position;
@@ -71,13 +74,13 @@ namespace Faraway.TestGame
             newVelocity.y += _gravity * Time.deltaTime;
 
             // Horizontal movement and jump input
-            var horizontalInput = new Vector3(_inputSource.HorizontalMovementDelta, 0f, 0f);
+            //var horizontalInput = new Vector3(_inputSource.HorizontalMovementDelta, 0f, 0f);
             if (_inputSource.Jump && _characterController.isGrounded)
                 newVelocity.y = _jumpVelocity;
 
             Velocity = newVelocity;
 
-            Move(Velocity * Time.deltaTime + horizontalInput);
+            Move(Velocity * Time.deltaTime);
 
             _animator.SetFloat("RunSpeed", Velocity.z);
         }
@@ -100,6 +103,20 @@ namespace Faraway.TestGame
             }
 
             EffectBehaviors.Add(effectBehavior);
+        }
+
+        private IEnumerator HorizontalMove(int direction)
+        {
+            float remainingOffset = _movementOffset;
+            while (remainingOffset > 0f)
+            {
+                float movement = _horizontalSpeed * Time.deltaTime;
+                movement = Mathf.Min(movement, remainingOffset);
+
+                Move(new Vector3(movement * direction, 0f, 0f));
+
+                yield return null;
+            }
         }
     }
 }
