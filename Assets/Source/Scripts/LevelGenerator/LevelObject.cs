@@ -10,7 +10,7 @@ namespace Faraway.TestGame
     public class LevelObject
     {
         public GameObject Prefab;
-        public float SpawnChance;
+        public int SpawnChance;
         public int MinimumInRow = 1;
         public int MaximumInRow = 1;
     }

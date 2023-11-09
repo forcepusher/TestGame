@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using Reflex.Attributes;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using Random = System.Random;
 
 namespace Faraway.TestGame
 {
@@ -23,8 +22,10 @@ namespace Faraway.TestGame
         [SerializeField]
         private List<LevelObject> _levelObjects = new();
 
-        private float _totalPickupRoll;
-        private float _lastObjectDistance;
+        private Random _random = new();
+        private int _totalPickupRoll;
+        private float _lastObjectZPosition;
+        private int _lastLane;
 
         [Inject]
         public void Inject(MainCamera mainCamera)
@@ -42,25 +43,33 @@ namespace Faraway.TestGame
         {
             float generationDistance = _mainCamera.transform.position.z + GenerationAheadDistance;
 
-            while (_lastObjectDistance < generationDistance)
+            while (_lastObjectZPosition < generationDistance)
             {
                 LevelObject levelObject = SelectRandomObject();
-                int amount = Random.Range(levelObject.MinimumInRow, levelObject.MaximumInRow);
-                int lane = Random.Range(-1, 1);
+                int amount = _random.Next(levelObject.MinimumInRow, levelObject.MaximumInRow);
+
+                int lane;
+                do
+                {
+                    lane = _random.Next(-1, 2);
+                }
+                while (lane == _lastLane);
+                _lastLane = lane;
+
+                Debug.Log(lane);
 
                 while (amount > 0)
                 {
-                    float position = _lastObjectDistance + DistanceBetweenObjects;
+                    float zPosition = _lastObjectZPosition + DistanceBetweenObjects;
 
                     if (levelObject.Prefab != null)
                     {
                         GameObject levelGameObject = Instantiate(levelObject.Prefab);
-                        levelGameObject
+                        levelGameObject.transform.position = new Vector3(lane * HorizontalOffset, 0f, zPosition);
                     }
-                    else
-                    {
 
-                    }
+                    amount -= 1;
+                    _lastObjectZPosition = zPosition;
                 }
             }
         }
@@ -68,7 +77,7 @@ namespace Faraway.TestGame
         private LevelObject SelectRandomObject()
         {
             LevelObject selectedObject = null;
-            float pickupRoll = Random.Range(0, _totalPickupRoll);
+            float pickupRoll = _random.Next(0, _totalPickupRoll);
             float minimumRollToSelect = 0;
 
             foreach (LevelObject levelObject in _levelObjects)

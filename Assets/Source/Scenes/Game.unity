@@ -996,7 +996,7 @@ MonoBehaviour:
   - Prefab: {fileID: 2759234680172400806, guid: 6bc268987fa2a204d8d5c101ac1f15be, type: 3}
     SpawnChance: 50
     MinimumInRow: 3
-    MaximumInRow: 10
+    MaximumInRow: 8
   - Prefab: {fileID: 6394278511288233640, guid: 1ebce3f80d47a674892b54f0c7e9ba22, type: 3}
     SpawnChance: 20
     MinimumInRow: 1
