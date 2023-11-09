@@ -70,10 +70,7 @@ namespace Faraway.TestGame
             // Gravity
             Vector3 newVelocity = Velocity;
             if (_characterController.isGrounded)
-            {
                 newVelocity.y = 0f;
-                _animator.SetBool("Jump", false);
-            }
 
             newVelocity.y += _gravity * Time.deltaTime;
 
@@ -94,6 +91,7 @@ namespace Faraway.TestGame
             {
                 newVelocity.y = _jumpVelocity;
                 _animator.SetBool("Jump", true);
+                StartCoroutine(StopJump(15f));
             }
 
             Velocity = newVelocity;
@@ -126,6 +124,12 @@ namespace Faraway.TestGame
         public void IncreaseScore(int amount)
         {
             Score += amount;
+        }
+
+        private IEnumerator StopJump(float time)
+        {
+            yield return new WaitForSeconds(0.75f);
+            _animator.SetBool("Jump", false);
         }
 
         private IEnumerator HorizontalMove(int direction)
