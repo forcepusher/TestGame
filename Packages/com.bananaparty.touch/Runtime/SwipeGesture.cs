@@ -35,22 +35,22 @@ namespace BananaParty.TouchInput
             {
                 Finger finger = _fingers[fingerIterator];
 
-                if (finger.Phase == FingerPhase.Lifted)
+                if (finger.ElapsedTime <= _timeThreshold)
                 {
-                    if (finger.ElapsedTime <= _timeThreshold)
+                    Vector2 swipeDelta = finger.NormalizedPosition - finger.NormalizedStartPosition;
+                    if (swipeDelta.magnitude >= _deltaThreshold)
                     {
-                        Vector2 swipeDelta = finger.NormalizedPosition - finger.NormalizedStartPosition;
-                        if (swipeDelta.magnitude >= _deltaThreshold)
+                        if (Vector2.Angle(_direction, swipeDelta) <= _angleLimit)
                         {
-                            if (Vector2.Angle(_direction, swipeDelta) <= _angleLimit)
-                            {
-                                IsActuated = true;
-                            }
+                            IsActuated = true;
+                            _fingers.RemoveAt(fingerIterator);
+                            break;
                         }
                     }
-
-                    _fingers.RemoveAt(fingerIterator);
                 }
+
+                if (finger.Phase == FingerPhase.Lifted)
+                    _fingers.RemoveAt(fingerIterator);
             }
         }
     }
