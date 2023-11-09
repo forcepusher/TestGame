@@ -15,6 +15,8 @@ namespace Faraway.TestGame
         private const float MagnetRadius = 7f;
         private const float MagnetSpeed = 20f;
 
+        private const float SpeedAdjustment = 5f;
+
         private readonly IRunner _runner;
         private readonly float _duration;
 
@@ -35,7 +37,12 @@ namespace Faraway.TestGame
 
         public void Tick(float deltaTime)
         {
+            bool started = _elapsedTime == 0;
+
             _elapsedTime += deltaTime;
+
+            if (started)
+                _runner.Velocity = new Vector3(_runner.Velocity.x, _runner.Velocity.y, _runner.Velocity.z + SpeedAdjustment);
 
             _runner.Velocity = new Vector3(_runner.Velocity.x, 0f, _runner.Velocity.z);
             float characterToFlyHeightDifference = FlyHeight - _runner.Position.y;
@@ -55,6 +62,9 @@ namespace Faraway.TestGame
 
         }
 
-        public void End() { }
+        public void End()
+        {
+            _runner.Velocity = new Vector3(_runner.Velocity.x, _runner.Velocity.y, _runner.Velocity.z - SpeedAdjustment);
+        }
     }
 }
