@@ -7,7 +7,7 @@ namespace Faraway.TestGame
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            
+            builder.Register<CrossPlatformInput>(Lifetime.Singleton).As<IInputSource, ITickable>();
         }
     }
 }

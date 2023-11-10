@@ -13,8 +13,7 @@ namespace Faraway.TestGame
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.Register<CrossPlatformInput>(Lifetime.Singleton).As<IInputSource, ITickable>();
-            builder.RegisterInstance(_mainCamera).AsSelf();
+            builder.RegisterInstance(_mainCamera).As<MainCamera>();
             builder.RegisterInstance(_playerCharacter).As<IRunner>();
         }
     }
