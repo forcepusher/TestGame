@@ -9,6 +9,7 @@ namespace Faraway.TestGame
         {
             builder.Register<HelloWorldService>(Lifetime.Singleton);
             builder.Register<GamePresenter>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<GamePresenter>();
         }
     }
 }
