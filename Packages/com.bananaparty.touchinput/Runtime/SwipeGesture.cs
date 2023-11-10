@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace BananaParty.TouchInput
 {
-    public class SwipeGesture : MonoBehaviour
+    public class SwipeGesture
     {
         private readonly Vector2 _direction;
         private readonly float _angleLimit;
