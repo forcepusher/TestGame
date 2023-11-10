@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 using Random = System.Random;
 
 namespace Faraway.TestGame
@@ -18,6 +19,7 @@ namespace Faraway.TestGame
         private const float HorizontalOffset = 2.2f;
 
         private MainCamera _mainCamera;
+        private IObjectResolver _objectResolver;
 
         [SerializeField]
         private List<LevelObject> _levelObjects = new();
@@ -30,9 +32,10 @@ namespace Faraway.TestGame
         private int _lastLane;
 
         [Inject]
-        public void Construct(MainCamera mainCamera)
+        public void Construct(MainCamera mainCamera, IObjectResolver objectResolver)
         {
             _mainCamera = mainCamera;
+            _objectResolver = objectResolver;
         }
 
         private void Awake()
@@ -64,7 +67,7 @@ namespace Faraway.TestGame
 
                     if (levelObject.Prefab != null)
                     {
-                        GameObject levelGameObject = Instantiate(levelObject.Prefab);
+                        GameObject levelGameObject = _objectResolver.Instantiate(levelObject.Prefab);
                         levelGameObject.transform.position = new Vector3(lane * HorizontalOffset, 0f, zPosition);
                     }
 
