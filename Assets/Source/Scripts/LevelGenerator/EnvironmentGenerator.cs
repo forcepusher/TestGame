@@ -1,5 +1,5 @@
-using Reflex.Attributes;
 using UnityEngine;
+using VContainer;
 
 namespace Faraway.TestGame
 {
@@ -18,7 +18,7 @@ namespace Faraway.TestGame
         private MainCamera _mainCamera;
 
         [Inject]
-        public void Inject(MainCamera mainCamera)
+        public void Construct(MainCamera mainCamera)
         {
             _mainCamera = mainCamera;
         }

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Reflex.Attributes;
 using UnityEngine;
+using VContainer;
 using Random = System.Random;
 
 namespace Faraway.TestGame
@@ -30,7 +30,7 @@ namespace Faraway.TestGame
         private int _lastLane;
 
         [Inject]
-        public void Inject(MainCamera mainCamera)
+        public void Construct(MainCamera mainCamera)
         {
             _mainCamera = mainCamera;
         }

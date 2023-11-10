@@ -1,8 +1,8 @@
-using Reflex.Attributes;
 using UniRx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using VContainer;
 
 namespace Faraway.TestGame
 {
@@ -22,7 +22,7 @@ namespace Faraway.TestGame
         private IRunner _runner;
 
         [Inject]
-        public void Inject(IRunner runner)
+        public void Construct(IRunner runner)
         {
             _runner = runner;
         }

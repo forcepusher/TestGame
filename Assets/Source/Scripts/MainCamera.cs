@@ -1,5 +1,5 @@
-using Reflex.Attributes;
 using UnityEngine;
+using VContainer;
 
 namespace Faraway.TestGame
 {
@@ -16,7 +16,7 @@ namespace Faraway.TestGame
         private Camera _camera;
 
         [Inject]
-        public void Inject(IRunner runner)
+        public void Construct(IRunner runner)
         {
             _followTarget = runner;
             _offset = transform.position - _followTarget.Position;

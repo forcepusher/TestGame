@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using Reflex.Attributes;
 using UnityEngine;
+using VContainer;
 
 namespace Faraway.TestGame
 {
@@ -36,7 +36,7 @@ namespace Faraway.TestGame
         public int Score { get; private set; }
 
         [Inject]
-        public void Inject(IInputSource inputSource)
+        public void Construct(IInputSource inputSource)
         {
             _inputSource = inputSource;
         }

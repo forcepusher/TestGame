@@ -1200,42 +1200,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1334612532}
-  - component: {fileID: 1334612531}
-  - component: {fileID: 1334612530}
   - component: {fileID: 1334612533}
   m_Layer: 0
-  m_Name: SceneScope
+  m_Name: SceneLifetimeScope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1334612530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334612529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35193aa41d42f684cb113a9b03f8a38a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 519420033}
-  _playerCharacter: {fileID: 715080136}
---- !u!114 &1334612531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334612529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fd1482e4a9dee141aecc5bcd0a4f0f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1334612532
 Transform:
   m_ObjectHideFlags: 0
@@ -1266,7 +1238,14 @@ MonoBehaviour:
   parentReference:
     TypeName: Faraway.TestGame.GameLifetimeScope
   autoRun: 1
-  autoInjectGameObjects: []
+  autoInjectGameObjects:
+  - {fileID: 519420028}
+  - {fileID: 923539063}
+  - {fileID: 27341295}
+  - {fileID: 715080131}
+  - {fileID: 891373079}
+  - {fileID: 2007744827}
+  - {fileID: 730988381}
   _mainCamera: {fileID: 519420033}
   _playerCharacter: {fileID: 715080136}
 --- !u!1001 &1339826082

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Reflex.Attributes;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace Faraway.TestGame
 {
@@ -16,7 +16,7 @@ namespace Faraway.TestGame
         private List<Image> _buffDurationImages = new();
 
         [Inject]
-        public void Inject(IRunner runner)
+        public void Construct(IRunner runner)
         {
             _runner = runner;
         }
