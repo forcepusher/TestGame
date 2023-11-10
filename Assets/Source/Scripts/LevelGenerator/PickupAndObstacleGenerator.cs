@@ -58,8 +58,6 @@ namespace Faraway.TestGame
                 while (lane == _lastLane);
                 _lastLane = lane;
 
-                Debug.Log(lane);
-
                 while (amount > 0)
                 {
                     float zPosition = _lastObjectZPosition + DistanceBetweenObjects;
