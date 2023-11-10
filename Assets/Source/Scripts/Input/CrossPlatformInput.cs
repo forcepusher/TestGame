@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using BananaParty.TouchInput;
 using UnityEngine;
 using VContainer.Unity;
@@ -12,7 +10,7 @@ namespace Faraway.TestGame
     /// <remarks>
     /// Executes in an async/await loop utilizing <see cref="UnitySynchronizationContext"/>.
     /// </remarks>
-    public class CrossPlatformInput : ITickable
+    public class CrossPlatformInput : ITickable, IInputSource
     {
         public CrossPlatformInput()
         {

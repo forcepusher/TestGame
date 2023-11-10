@@ -1883,9 +1883,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8cbbc94b1b62ed4ebfaafbe9891302e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RestartButton: {fileID: 0}
-  DistanceText: {fileID: 0}
-  "\u0421oinsText": {fileID: 0}
+  RestartButton: {fileID: 1949327531}
+  DistanceText: {fileID: 1406873015}
+  "\u0421oinsText": {fileID: 648113266}
 --- !u!222 &1983429975300658900
 CanvasRenderer:
   m_ObjectHideFlags: 0
