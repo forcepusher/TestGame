@@ -1,8 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using BananaParty.TouchInput;
 using UnityEngine;
+using VContainer.Unity;
 
 namespace Faraway.TestGame
 {
@@ -12,14 +12,11 @@ namespace Faraway.TestGame
     /// <remarks>
     /// Executes in an async/await loop utilizing <see cref="UnitySynchronizationContext"/>.
     /// </remarks>
-    public class CrossPlatformInput : IInputSource, IDisposable
+    public class CrossPlatformInput : ITickable
     {
-        private bool _disposed = false;
-
         public CrossPlatformInput()
         {
             Input.simulateMouseWithTouches = false;
-            TickLoop();
         }
 
         public bool Jump => _jumpKeyboard || _jumpTouch;
@@ -41,38 +38,25 @@ namespace Faraway.TestGame
         private readonly SwipeGesture _swipeLeft = new(Vector2.left);
         private readonly SwipeGesture _swipeRight = new(Vector2.right);
 
-        private async void TickLoop()
+        public void Tick()
         {
-            while (true)
+            _touchscreen.PollInput(Time.unscaledDeltaTime);
+
+            while (_touchscreen.HasNewTouches)
             {
-                await Task.Yield();
-
-                if (_disposed)
-                    return;
-
-                _touchscreen.PollInput(Time.unscaledDeltaTime);
-
-                while (_touchscreen.HasNewTouches)
-                {
-                    Finger finger = _touchscreen.GetNextNewTouch();
-                    _swipeUp.AddFinger(finger);
-                    _swipeLeft.AddFinger(finger);
-                    _swipeRight.AddFinger(finger);
-                }
-
-                _swipeUp.PollInput();
-                _swipeLeft.PollInput();
-                _swipeRight.PollInput();
-
-                _jumpTouch = _swipeUp.IsActuated;
-                _moveLeftTouch = _swipeLeft.IsActuated;
-                _moveRightTouch = _swipeRight.IsActuated;
+                Finger finger = _touchscreen.GetNextNewTouch();
+                _swipeUp.AddFinger(finger);
+                _swipeLeft.AddFinger(finger);
+                _swipeRight.AddFinger(finger);
             }
-        }
 
-        public void Dispose()
-        {
-            _disposed = true;
+            _swipeUp.PollInput();
+            _swipeLeft.PollInput();
+            _swipeRight.PollInput();
+
+            _jumpTouch = _swipeUp.IsActuated;
+            _moveLeftTouch = _swipeLeft.IsActuated;
+            _moveRightTouch = _swipeRight.IsActuated;
         }
     }
 }

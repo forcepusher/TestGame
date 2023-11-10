@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Faraway.TestGame
 {
-    public class CoinsText : MonoBehaviour
+    public class CoinsScoreText : MonoBehaviour
     {
         private IRunner _runner;
         private Text _text;

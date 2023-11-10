@@ -14,12 +14,9 @@ namespace Faraway.TestGame
     /// </remarks>
     public class GameOverCanvas : MonoBehaviour
     {
-        [SerializeField]
-        private Button _restartButton;
-        [SerializeField]
-        private Text _distanceText;
-        [SerializeField]
-        private Text _coinsText;
+        public Button RestartButton;
+        public Text DistanceText;
+        public Text ÑoinsText;
 
         private Canvas _canvas;
         private IRunner _runner;
@@ -35,7 +32,7 @@ namespace Faraway.TestGame
             _canvas = GetComponent<Canvas>();
             _canvas.enabled = false;
 
-            _restartButton.OnClickAsObservable().Subscribe(_ =>
+            RestartButton.OnClickAsObservable().Subscribe(_ =>
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             });
@@ -43,8 +40,8 @@ namespace Faraway.TestGame
             Observable.EveryUpdate().First(_ => _runner.IsDead).Subscribe(_ =>
             {
                 _canvas.enabled = true;
-                _distanceText.text = $"Distance: {Mathf.RoundToInt(_runner.Position.z)}m";
-                _coinsText.text = $"Coins: {_runner.Score}";
+                DistanceText.text = $"Distance: {Mathf.RoundToInt(_runner.Position.z)}m";
+                ÑoinsText.text = $"Coins: {_runner.Score}";
             });
         }
     }
