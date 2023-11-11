@@ -1,11 +1,12 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
+using VContainer.Unity;
 
 namespace Faraway.TestGame
 {
     public class SceneLoader
     {
-        private GameLifetimeScope _gameLifetimeScope;
+        private readonly GameLifetimeScope _gameLifetimeScope;
 
         public SceneLoader(GameLifetimeScope gameLifetimeScope)
         {
@@ -14,7 +15,7 @@ namespace Faraway.TestGame
 
         public async UniTask LoadSceneAsync(string sceneName)
         {
-            using (GameLifetimeScope.EnqueueParent(_gameLifetimeScope))
+            using (LifetimeScope.EnqueueParent(_gameLifetimeScope))
             {
                 await SceneManager.LoadSceneAsync(sceneName);
             }
