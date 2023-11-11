@@ -25,7 +25,7 @@ namespace Faraway.TestGame
 #endif
 
             builder.RegisterMessageHandlerFilter<CoinsScoreMessageFilter>();
-            builder.RegisterMessageBroker<int>(messagePipeOptions);
+            builder.RegisterMessageBroker<CoinsScoreMessage>(messagePipeOptions);
         }
     }
 }

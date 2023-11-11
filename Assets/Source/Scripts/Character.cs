@@ -26,7 +26,7 @@ namespace Faraway.TestGame
         private CharacterController _characterController;
         private Animator _animator;
         private IInputSource _inputSource;
-        private IPublisher<int> _scorePublisher;
+        private IPublisher<CoinsScoreMessage> _scorePublisher;
 
         private int _movementLane = 0;
 
@@ -38,7 +38,7 @@ namespace Faraway.TestGame
         public int Score { get; private set; }
 
         [Inject]
-        public void Construct(IInputSource inputSource, IPublisher<int> scorePublisher)
+        public void Construct(IInputSource inputSource, IPublisher<CoinsScoreMessage> scorePublisher)
         {
             _inputSource = inputSource;
             _scorePublisher = scorePublisher;
@@ -131,7 +131,7 @@ namespace Faraway.TestGame
         public void IncreaseScore(int amount)
         {
             Score += amount;
-            _scorePublisher.Publish(Score);
+            _scorePublisher.Publish(new CoinsScoreMessage(Score));
         }
 
         private IEnumerator StopJump(float time)

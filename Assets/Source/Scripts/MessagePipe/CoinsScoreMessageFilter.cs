@@ -3,11 +3,11 @@ using MessagePipe;
 
 namespace Faraway.TestGame
 {
-    public class CoinsScoreMessageFilter : MessageHandlerFilter<int>
+    public class CoinsScoreMessageFilter : MessageHandlerFilter<CoinsScoreMessage>
     {
-        public override void Handle(int message, Action<int> next)
+        public override void Handle(CoinsScoreMessage message, Action<CoinsScoreMessage> next)
         {
-            next.Invoke(message + 10);
+            next.Invoke(new CoinsScoreMessage(message.Score + 10));
         }
     }
 }

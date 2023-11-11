@@ -7,13 +7,13 @@ namespace Faraway.TestGame
 {
     public class CoinsScoreText : MonoBehaviour
     {
-        private ISubscriber<int> _scoreSubscriber;
+        private ISubscriber<CoinsScoreMessage> _scoreSubscriber;
         private CoinsScoreMessageFilter _scoreMessageFilter;
 
         private Text _text;
 
         [Inject]
-        public void Construct(ISubscriber<int> scoreSubscriber, CoinsScoreMessageFilter scoreMessageFilter)
+        public void Construct(ISubscriber<CoinsScoreMessage> scoreSubscriber, CoinsScoreMessageFilter scoreMessageFilter)
         {
             _scoreSubscriber = scoreSubscriber;
             _scoreMessageFilter = scoreMessageFilter;
@@ -22,7 +22,7 @@ namespace Faraway.TestGame
         private void Awake()
         {
             _text = GetComponent<Text>();
-            _scoreSubscriber.Subscribe(scoreMessage => _text.text = scoreMessage.ToString(), _scoreMessageFilter);
+            _scoreSubscriber.Subscribe(scoreMessage => _text.text = scoreMessage.Score.ToString(), _scoreMessageFilter);
         }
     }
 }
