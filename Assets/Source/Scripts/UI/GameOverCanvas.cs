@@ -34,9 +34,9 @@ namespace Faraway.TestGame
             _canvas = GetComponent<Canvas>();
             _canvas.enabled = false;
 
-            RestartButton.OnClickAsObservable().Subscribe(_ =>
+            RestartButton.OnClickAsObservable().Subscribe(async _ =>
             {
-                _sceneLoader.LoadSceneAsync("Game");
+                await _sceneLoader.LoadSceneAsync("Game");
             });
 
             Observable.EveryUpdate().First(_ => _runner.IsDead).Subscribe(_ =>
