@@ -1,3 +1,4 @@
+using MessagePipe;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -15,6 +16,10 @@ namespace Faraway.TestGame
         {
             builder.RegisterInstance(_mainCamera).As<MainCamera>();
             builder.RegisterInstance(_playerCharacter).As<IRunner>();
+
+            MessagePipeOptions messagePipeOptions = builder.RegisterMessagePipe();
+            //builder.RegisterBuildCallback(container => GlobalMessagePipe.SetProvider(container.AsServiceProvider()));
+            builder.RegisterMessageBroker<int>(messagePipeOptions);
         }
     }
 }
