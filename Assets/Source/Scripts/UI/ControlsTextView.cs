@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace Faraway.TestGame
 {
-    public class ControlsText : MonoBehaviour
+    public class ControlsTextView : MonoBehaviour
     {
         private void Awake()
         {

@@ -15,6 +15,8 @@ namespace Faraway.TestGame
         private GameOverCanvasView _gameOverCanvasView;
         [SerializeField]
         private CoinsScoreTextView _coinsScoreTextView;
+        [SerializeField]
+        private BuffDurationCanvasView _buffDurationCanvasView;
 
         protected override void Configure(IContainerBuilder builder)
         {
@@ -22,9 +24,11 @@ namespace Faraway.TestGame
             builder.RegisterInstance(_playerCharacter).As<IRunner>();
             builder.RegisterInstance(_gameOverCanvasView).AsSelf();
             builder.RegisterInstance(_coinsScoreTextView).AsSelf();
+            builder.RegisterInstance(_buffDurationCanvasView).AsSelf();
 
             builder.Register<GameOverCanvas>(Lifetime.Singleton).As<IStartable>();
             builder.Register<CoinsScoreText>(Lifetime.Singleton).As<IStartable>();
+            builder.Register<BuffDurationCanvas>(Lifetime.Singleton).As<ITickable>();
 
             MessagePipeOptions messagePipeOptions = builder.RegisterMessagePipe();
 

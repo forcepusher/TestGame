@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Faraway.TestGame
 {
-    public class FadeTimer : MonoBehaviour
+    public class FadeTimerView : MonoBehaviour
     {
         [SerializeField]
         private float _fadeDuration = 0.5f;
