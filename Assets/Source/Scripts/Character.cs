@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MessagePipe;
 using UnityEngine;
 using VContainer;
 
@@ -25,6 +26,7 @@ namespace Faraway.TestGame
         private CharacterController _characterController;
         private Animator _animator;
         private IInputSource _inputSource;
+        private IPublisher<int> _scorePublisher;
 
         private int _movementLane = 0;
 
@@ -36,9 +38,10 @@ namespace Faraway.TestGame
         public int Score { get; private set; }
 
         [Inject]
-        public void Construct(IInputSource inputSource)
+        public void Construct(IInputSource inputSource, IPublisher<int> scorePublisher)
         {
             _inputSource = inputSource;
+            _scorePublisher = scorePublisher;
         }
 
         private void Awake()
@@ -128,6 +131,7 @@ namespace Faraway.TestGame
         public void IncreaseScore(int amount)
         {
             Score += amount;
+            _scorePublisher.Publish(Score);
         }
 
         private IEnumerator StopJump(float time)
