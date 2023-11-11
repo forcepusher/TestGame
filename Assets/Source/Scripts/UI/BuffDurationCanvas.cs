@@ -1,54 +1,30 @@
 using VContainer;
 using VContainer.Unity;
+using UniRx;
 
 namespace Faraway.TestGame
 {
-    public class BuffDurationCanvas : ITickable
+    public class BuffDurationCanvas : ITickable, IStartable
     {
+        private BuffDurationCanvasView _buffDurationCanvasView;
         private IRunner _runner;
 
         [Inject]
-        public void Construct(IRunner runner)
+        public void Construct(IRunner runner, BuffDurationCanvasView buffDurationCanvasView)
         {
             _runner = runner;
+            _buffDurationCanvasView = buffDurationCanvasView;
+        }
+
+        public void Start()
+        {
+            _runner.EffectBehaviors.ObserveAdd().Subscribe(_effectBehavior => _buffDurationCanvasView.AddEffectView(_effectBehavior.Value));
+            _runner.EffectBehaviors.ObserveRemove().Subscribe(_effectBehavior => _buffDurationCanvasView.RemoveEffectView(_effectBehavior.Value));
         }
 
         public void Tick()
         {
-            
+            _buffDurationCanvasView.UpdateEffectViews();
         }
-
-        //private void Update()
-        //{
-        //    foreach (IEffectBehavior runnerEffectBehavior in _runner.EffectBehaviors)
-        //    {
-        //        if (!_trackedEffects.Contains(runnerEffectBehavior))
-        //        {
-        //            Image buffDurationImage = Instantiate(_buffDurationImage, transform);
-        //            buffDurationImage.rectTransform.SetAsFirstSibling();
-        //            buffDurationImage.color = runnerEffectBehavior.BuffColor;
-        //            buffDurationImage.enabled = true;
-        //            _buffDurationImages.Add(buffDurationImage);
-        //            _trackedEffects.Add(runnerEffectBehavior);
-        //        }
-        //    }
-
-        //    for (int effectIteration = _trackedEffects.Count - 1; effectIteration >= 0; effectIteration--)
-        //    {
-        //        IEffectBehavior effectBehavior = _trackedEffects[effectIteration];
-        //        Image durationImage = _buffDurationImages[effectIteration];
-
-        //        if (!_runner.EffectBehaviors.Contains(effectBehavior))
-        //        {
-        //            _trackedEffects.RemoveAt(effectIteration);
-        //            _buffDurationImages.RemoveAt(effectIteration);
-        //            Destroy(durationImage.gameObject);
-        //        }
-        //        else
-        //        {
-        //            durationImage.fillAmount = effectBehavior.TimeRemaining;
-        //        }
-        //    }
-        //}
     }
 }

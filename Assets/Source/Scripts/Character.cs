@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using MessagePipe;
+using UniRx;
 using UnityEngine;
 using VContainer;
 
@@ -34,7 +35,7 @@ namespace Faraway.TestGame
         public Vector3 Position => transform.position;
         public Vector3 Velocity { get; set; }
         public bool IsDead { get; set; } = false;
-        public List<IEffectBehavior> EffectBehaviors { get; } = new();
+        public ReactiveCollection<IEffectBehavior> EffectBehaviors { get; } = new();
         public int Score { get; private set; }
 
         [Inject]
@@ -105,7 +106,7 @@ namespace Faraway.TestGame
 
             _animator.SetFloat("RunSpeed", Velocity.z);
             // This is a crutch. Animator logic should be separated.
-            _animator.SetBool("Flying", EffectBehaviors.Exists((effect) => effect.StackingIdentifier == 2));
+            _animator.SetBool("Flying", Position.y > 1f && !_animator.GetBool("Jump"));
         }
 
         public void Move(Vector3 motion)

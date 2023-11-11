@@ -1251,6 +1251,7 @@ MonoBehaviour:
   _playerCharacter: {fileID: 715080136}
   _gameOverCanvasView: {fileID: 2007744832}
   _coinsScoreTextView: {fileID: 1150365251}
+  _buffDurationCanvasView: {fileID: 891373084}
 --- !u!1001 &1339826082
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 namespace Faraway.TestGame
@@ -13,7 +14,7 @@ namespace Faraway.TestGame
         Vector3 Velocity { get; set; }
         void Move(Vector3 motion);
         bool IsDead { get; set; }
-        List<IEffectBehavior> EffectBehaviors { get; }
+        ReactiveCollection<IEffectBehavior> EffectBehaviors { get; }
         int Score { get; }
         void IncreaseScore(int amount);
     }

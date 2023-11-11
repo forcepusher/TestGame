@@ -28,7 +28,7 @@ namespace Faraway.TestGame
 
             builder.Register<GameOverCanvas>(Lifetime.Singleton).As<IStartable>();
             builder.Register<CoinsScoreText>(Lifetime.Singleton).As<IStartable>();
-            builder.Register<BuffDurationCanvas>(Lifetime.Singleton).As<ITickable>();
+            builder.Register<BuffDurationCanvas>(Lifetime.Singleton).As<IStartable, ITickable>();
 
             MessagePipeOptions messagePipeOptions = builder.RegisterMessagePipe();
 
