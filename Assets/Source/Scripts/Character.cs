@@ -96,7 +96,7 @@ namespace Faraway.TestGame
             {
                 newVelocity.y = _jumpVelocity;
                 _animator.SetBool("Jump", true);
-                StartCoroutine(StopJump(15f));
+                StartCoroutine(StopJump(0.75f));
             }
 
             Velocity = newVelocity;
@@ -134,9 +134,9 @@ namespace Faraway.TestGame
             _scorePublisher.Publish(new CoinsScoreMessage(Score));
         }
 
-        private IEnumerator StopJump(float time)
+        private IEnumerator StopJump(float delay)
         {
-            yield return new WaitForSeconds(0.75f);
+            yield return new WaitForSeconds(delay);
             _animator.SetBool("Jump", false);
         }
 
