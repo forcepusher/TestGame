@@ -7,22 +7,22 @@ namespace Faraway.TestGame
 {
     public class CoinsScoreText : MonoBehaviour
     {
-        private IRunner _runner;
         private ISubscriber<int> _scoreSubscriber;
+        private CoinsScoreMessageFilter _scoreMessageFilter;
 
         private Text _text;
 
         [Inject]
-        public void Construct(IRunner runner, ISubscriber<int> scoreSubscriber)
+        public void Construct(ISubscriber<int> scoreSubscriber, CoinsScoreMessageFilter scoreMessageFilter)
         {
-            _runner = runner;
             _scoreSubscriber = scoreSubscriber;
+            _scoreMessageFilter = scoreMessageFilter;
         }
 
         private void Awake()
         {
             _text = GetComponent<Text>();
-            _scoreSubscriber.Subscribe(scoreMessage => _text.text = scoreMessage.ToString());
+            _scoreSubscriber.Subscribe(scoreMessage => _text.text = scoreMessage.ToString(), _scoreMessageFilter);
         }
     }
 }

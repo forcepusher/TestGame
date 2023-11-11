@@ -19,6 +19,7 @@ namespace Faraway.TestGame
 
             MessagePipeOptions messagePipeOptions = builder.RegisterMessagePipe();
             //builder.RegisterBuildCallback(container => GlobalMessagePipe.SetProvider(container.AsServiceProvider()));
+            builder.RegisterMessageHandlerFilter<CoinsScoreMessageFilter>();
             builder.RegisterMessageBroker<int>(messagePipeOptions);
         }
     }
