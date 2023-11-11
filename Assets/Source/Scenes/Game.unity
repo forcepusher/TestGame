@@ -1248,6 +1248,7 @@ MonoBehaviour:
   - {fileID: 730988381}
   _mainCamera: {fileID: 519420033}
   _playerCharacter: {fileID: 715080136}
+  _gameOverCanvasView: {fileID: 2007744832}
 --- !u!1001 &1339826082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1865,6 +1866,7 @@ MonoBehaviour:
   RestartButton: {fileID: 1949327531}
   DistanceText: {fileID: 1406873015}
   "\u0421oinsText": {fileID: 648113266}
+  Canvas: {fileID: 2007744830}
 --- !u!222 &1983429975300658900
 CanvasRenderer:
   m_ObjectHideFlags: 0

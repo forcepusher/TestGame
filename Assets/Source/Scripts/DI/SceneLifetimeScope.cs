@@ -11,11 +11,16 @@ namespace Faraway.TestGame
         private MainCamera _mainCamera;
         [SerializeField]
         private Character _playerCharacter;
+        [SerializeField]
+        private GameOverCanvasView _gameOverCanvasView;
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterInstance(_mainCamera).As<MainCamera>();
+            builder.RegisterInstance(_mainCamera).AsSelf();
             builder.RegisterInstance(_playerCharacter).As<IRunner>();
+            builder.RegisterInstance(_gameOverCanvasView).AsSelf();
+
+            builder.Register<GameOverCanvas>(Lifetime.Singleton).As<IStartable>();
 
             MessagePipeOptions messagePipeOptions = builder.RegisterMessagePipe();
 

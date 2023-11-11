@@ -1,50 +1,47 @@
+using System;
 using UniRx;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using VContainer;
+using VContainer.Unity;
 
 namespace Faraway.TestGame
 {
-    /// <summary>
-    /// Canvas that that shows up on player death with stats and a restart button.
-    /// </summary>
-    /// <remarks>
-    /// Uses <see cref="UniRx"/> <see cref="Observable"/>s.
-    /// </remarks>
-    public class GameOverCanvas : MonoBehaviour
+    public class GameOverCanvas : IStartable, IDisposable
     {
-        public Button RestartButton;
-        public Text DistanceText;
-        public Text ÑoinsText;
-
-        private Canvas _canvas;
         private IRunner _runner;
         private SceneLoader _sceneLoader;
+        private GameOverCanvasView _gameOverCanvasView;
+
+        private readonly CompositeDisposable _disposable = new();
 
         [Inject]
-        public void Construct(IRunner runner, SceneLoader sceneLoader)
+        public void Construct(GameOverCanvasView gameOverCanvasView, IRunner runner, SceneLoader sceneLoader)
         {
             _runner = runner;
             _sceneLoader = sceneLoader;
+            _gameOverCanvasView = gameOverCanvasView;
         }
 
-        private void Awake()
+        public void Start()
         {
-            _canvas = GetComponent<Canvas>();
-            _canvas.enabled = false;
+            _gameOverCanvasView.Canvas.enabled = false;
 
-            RestartButton.OnClickAsObservable().Subscribe(async _ =>
+            _gameOverCanvasView.RestartButton.OnClickAsObservable().Subscribe(async _ =>
             {
                 await _sceneLoader.LoadSceneAsync("Game");
-            });
+            }).AddTo(_disposable);
 
             Observable.EveryUpdate().First(_ => _runner.IsDead).Subscribe(_ =>
             {
-                _canvas.enabled = true;
-                DistanceText.text = $"Distance: {Mathf.RoundToInt(_runner.Position.z)}m";
-                ÑoinsText.text = $"Coins: {_runner.Score}";
-            });
+                _gameOverCanvasView.Canvas.enabled = true;
+                _gameOverCanvasView.DistanceText.text = $"Distance: {Mathf.RoundToInt(_runner.Position.z)}m";
+                _gameOverCanvasView.ÑoinsText.text = $"Coins: {_runner.Score}";
+            }).AddTo(_disposable);
+        }
+
+        public void Dispose()
+        {
+            _disposable.Dispose();
         }
     }
 }
