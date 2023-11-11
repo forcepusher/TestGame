@@ -14,7 +14,7 @@ namespace Faraway.TestGame
     {
         public Button RestartButton;
         public Text DistanceText;
-        public Text ÑoinsText;
+        public Text CoinsText;
         public Canvas Canvas;
     }
 }

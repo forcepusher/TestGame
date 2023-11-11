@@ -1868,7 +1868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RestartButton: {fileID: 1949327531}
   DistanceText: {fileID: 1406873015}
-  "\u0421oinsText": {fileID: 648113266}
+  CoinsText: {fileID: 648113266}
   Canvas: {fileID: 2007744830}
 --- !u!222 &1983429975300658900
 CanvasRenderer:

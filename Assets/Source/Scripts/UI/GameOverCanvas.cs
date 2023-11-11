@@ -35,7 +35,7 @@ namespace Faraway.TestGame
             {
                 _gameOverCanvasView.Canvas.enabled = true;
                 _gameOverCanvasView.DistanceText.text = $"Distance: {Mathf.RoundToInt(_runner.Position.z)}m";
-                _gameOverCanvasView.ÑoinsText.text = $"Coins: {_runner.Score}";
+                _gameOverCanvasView.CoinsText.text = $"Coins: {_runner.Score}";
             }).AddTo(_disposable);
         }
 
