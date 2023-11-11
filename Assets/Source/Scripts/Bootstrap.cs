@@ -1,15 +1,21 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using UnityEngine.SceneManagement;
 using VContainer.Unity;
 
 namespace Faraway.TestGame
 {
     public class Bootstrap : IAsyncStartable
     {
+        private SceneLoader _sceneLoader;
+
+        private Bootstrap(SceneLoader sceneLoader)
+        {
+            _sceneLoader = sceneLoader;
+        }
+
         public async UniTask StartAsync(CancellationToken cancellation)
         {
-            await SceneManager.LoadSceneAsync("Game");
+            await _sceneLoader.LoadSceneAsync("Game");
         }
     }
 }

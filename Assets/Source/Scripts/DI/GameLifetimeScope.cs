@@ -7,6 +7,8 @@ namespace Faraway.TestGame
     {
         protected override void Configure(IContainerBuilder builder)
         {
+            builder.Register<SceneLoader>(Lifetime.Singleton).AsSelf();
+
             builder.Register<Bootstrap>(Lifetime.Singleton).As<IAsyncStartable>();
 
             builder.Register<CrossPlatformInput>(Lifetime.Singleton).As<IInputSource, ITickable>();

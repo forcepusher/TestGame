@@ -20,11 +20,13 @@ namespace Faraway.TestGame
 
         private Canvas _canvas;
         private IRunner _runner;
+        private SceneLoader _sceneLoader;
 
         [Inject]
-        public void Construct(IRunner runner)
+        public void Construct(IRunner runner, SceneLoader sceneLoader)
         {
             _runner = runner;
+            _sceneLoader = sceneLoader;
         }
 
         private void Awake()
@@ -34,7 +36,7 @@ namespace Faraway.TestGame
 
             RestartButton.OnClickAsObservable().Subscribe(_ =>
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                _sceneLoader.LoadSceneAsync("Game");
             });
 
             Observable.EveryUpdate().First(_ => _runner.IsDead).Subscribe(_ =>
