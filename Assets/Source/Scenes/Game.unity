@@ -1113,6 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fe60c9899127ae48b646760f0d65b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Text: {fileID: 1150365248}
 --- !u!1 &1198346019
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,6 +1250,7 @@ MonoBehaviour:
   _mainCamera: {fileID: 519420033}
   _playerCharacter: {fileID: 715080136}
   _gameOverCanvasView: {fileID: 2007744832}
+  _coinsScoreTextView: {fileID: 1150365251}
 --- !u!1001 &1339826082
 PrefabInstance:
   m_ObjectHideFlags: 0
