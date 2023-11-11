@@ -17,8 +17,13 @@ namespace Faraway.TestGame
             builder.RegisterInstance(_mainCamera).As<MainCamera>();
             builder.RegisterInstance(_playerCharacter).As<IRunner>();
 
-            MessagePipeOptions messagePipeOptions = builder.RegisterMessagePipe(options => options.EnableCaptureStackTrace = true);
+            MessagePipeOptions messagePipeOptions = builder.RegisterMessagePipe();
+
+#if UNITY_EDITOR
+            messagePipeOptions.EnableCaptureStackTrace = true;
             builder.RegisterBuildCallback(container => GlobalMessagePipe.SetProvider(container.AsServiceProvider()));
+#endif
+
             builder.RegisterMessageHandlerFilter<CoinsScoreMessageFilter>();
             builder.RegisterMessageBroker<int>(messagePipeOptions);
         }
